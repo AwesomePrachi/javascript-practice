@@ -40,6 +40,8 @@ javascript-practice/
 
 Each section contains practice problems related to the corresponding JavaScript topic.
 
+---
+
 ## Practice Approach
 
 For each problem, I focus on:
