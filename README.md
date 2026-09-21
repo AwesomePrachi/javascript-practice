@@ -1,46 +1,52 @@
 # JavaScript Practice
 
-A structured collection of JavaScript problems and exercises covering core programming concepts, logical reasoning, and problem-solving.
+A structured collection of JavaScript concepts, problems, and exercises focused on building strong fundamentals, logical thinking, and problem-solving skills.
 
-This repository documents my progress as I strengthen my JavaScript skills through consistent hands-on practice.
-
----
+This repository documents my progress through consistent hands-on JavaScript practice.
 
 ## Objectives
 
 - Strengthen JavaScript fundamentals
 - Improve logical thinking and problem-solving
+- Understand core JavaScript concepts through practice
 - Practice writing clean and readable code
 - Apply concepts through hands-on exercises
 - Build consistency through regular practice
 
----
+## Topics & Practice
 
-## Topics & Progress
-
-| # | Topic | Status |
+| # | Topic | Practice |
 |---|---|---|
-| 01 | Basics | ✅ Completed |
-| 02 | Conditions | ✅ Completed |
-| 03 | Loops | ✅ Completed |
-| 04 | Arrays | ⏳ Upcoming |
-
----
+| 01 | Variables & Declarations | [View Practice](./01-variables-and-declarations/) |
+| 02 | Data Types | [View Practice](./02-data-types/) |
+| 03 | Operators | ⏳ Upcoming |
+| 04 | Control Flow | ⏳ Upcoming |
+| 05 | Loops | ⏳ Upcoming |
 
 ## Repository Structure
 
 ```text
 javascript-practice/
 │
-├── 01-basics/
-├── 02-conditions/
-├── 03-loops/
-└── 04-arrays/
+├── 01-variables-and-declarations/
+│   ├── README.md
+│   ├── 01-var-let-const.js
+│   ├── 02-scope.js
+│   ├── 03-temporal-dead-zone.js
+│   └── 04-hoisting.js
+│
+├── 02-data-types/
+│   ├── README.md
+│   ├── 01-primitives-and-objects.js
+│   ├── 02-dynamic-typing.js
+│   ├── 03-typeof-quirks.js
+│   ├── 04-type-coercion.js
+│   └── 05-truthy-and-falsy.js
+│
+└── README.md
 ```
 
-Each section contains practice problems related to the corresponding JavaScript topic.
-
----
+Each section contains focused JavaScript examples and exercises related to the corresponding topic.
 
 ## Practice Approach
 
@@ -53,18 +59,6 @@ For each problem, I focus on:
 - Testing different inputs and edge cases
 - Reviewing and improving the solution when possible
 
----
-
-## Progress
-
-**Current Progress**
-
-`Basics` → `Conditions` → `Loops` → `Next: Arrays`
-
-This repository will continue to evolve as I learn new concepts and solve more problems.
-
----
-
 ## What This Repository Demonstrates
 
 - Strong JavaScript fundamentals
@@ -74,8 +68,6 @@ This repository will continue to evolve as I learn new concepts and solve more p
 - Consistent hands-on practice
 - Organized and readable code
 
----
-
 ## Tech
 
 - JavaScript (ES6+)
@@ -83,10 +75,8 @@ This repository will continue to evolve as I learn new concepts and solve more p
 - Git
 - GitHub
 
----
-
-## Note
+## Progress
 
 This repository is continuously updated as I progress through JavaScript concepts and problem-solving exercises.
 
-For larger, production-oriented projects, see my featured projects on my GitHub profile.
+`Learn → Practice → Build → Improve`
