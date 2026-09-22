@@ -17,10 +17,10 @@ This repository documents my progress through consistent hands-on JavaScript pra
 
 | # | Topic | Practice |
 |---|---|---|
-| 01 | Variables & Declarations | [View Practice](./01-variables-and-declarations/) |
+| 01 | Variables & Declarations | [View Practice](.01-variables-and-declarations/) |
 | 02 | Data Types | [View Practice](./02-data-types/) |
-| 03 | Operators | ⏳ Upcoming |
-| 04 | Control Flow | ⏳ Upcoming |
+| 03 | Operators | [View Practice](./03-operators/) |
+| 04 | Control Flow | [View Practice](./04-control-flow/) |
 | 05 | Loops | ⏳ Upcoming |
 
 ## Repository Structure
@@ -42,6 +42,25 @@ javascript-practice/
 │   ├── 03-typeof-quirks.js
 │   ├── 04-type-coercion.js
 │   └── 05-truthy-and-falsy.js
+│
+├── 03-operators/
+│   ├── README.md
+│   ├── 01-assignment-operators.js
+│   ├── 02-arithmetic-operators.js
+│   ├── 03-comparison-operators.js
+│   ├── 04-logical-operators.js
+│   ├── 05-unary-and-update-operators.js
+│   ├── 06-ternary-operator.js
+│   ├── 07-typeof.js
+│   └── 08-instanceof.js
+│
+├── 04-control-flow/
+│   ├── README.md
+│   ├── 01-if-else.js
+│   ├── 02-switch.js
+│   ├── 03-early-return.js
+│   ├── 04-grade-calculator.js
+│   └── 05-rock-paper-scissors.js
 │
 └── README.md
 ```
