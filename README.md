@@ -21,7 +21,9 @@ This repository documents my progress through consistent hands-on JavaScript pra
 | 02 | Data Types | [View Practice](./02-data-types/) |
 | 03 | Operators | [View Practice](./03-operators/) |
 | 04 | Control Flow | [View Practice](./04-control-flow/) |
-| 05 | Loops | ⏳ Upcoming |
+| 05 | Loops | [View Practice](./05-loops/) |
+| 06 | Functions | [View Practice](./06-functions/) |
+| 07 | Arrays | ⏳ Upcoming |
 
 ## Repository Structure
 
@@ -61,6 +63,27 @@ javascript-practice/
 │   ├── 03-early-return.js
 │   ├── 04-grade-calculator.js
 │   └── 05-rock-paper-scissors.js
+├── 05-loops/
+│   ├── README.md
+│   ├── 01-for-loop.js
+│   ├── 02-while-loop.js
+│   ├── 03-do-while-loop.js
+│   ├── 04-break-and-continue.js
+│   ├── 05-loop-practice.js
+│   ├── 06-nested-loops-and-patterns.js
+│   └── 07-number-and-digit-problems.js
+│
+├── 06-functions/
+│   ├── README.md
+│   ├── 01-function-declarations.js
+│   ├── 02-function-expressions-and-arrow-functions.js
+│   ├── 03-parameters-arguments-and-default-parameters.js
+│   ├── 04-rest-parameters-and-return.js
+│   ├── 05-first-class-and-higher-order-functions.js
+│   ├── 06-pure-and-impure-functions.js
+│   ├── 07-closures-and-lexical-scope.js
+│   ├── 08-iife-and-hoisting.js
+│   └── 09-function-practice.js
 │
 └── README.md
 ```
