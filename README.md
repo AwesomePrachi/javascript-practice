@@ -23,7 +23,8 @@ This repository documents my progress through consistent hands-on JavaScript pra
 | 04 | Control Flow | [View Practice](./04-control-flow/) |
 | 05 | Loops | [View Practice](./05-loops/) |
 | 06 | Functions | [View Practice](./06-functions/) |
-| 07 | Arrays | ⏳ Upcoming |
+| 07 | Arrays | [View Practice](./07-arrays/) |
+| 08 | Objects | [View Practice](./08-objects/) |
 
 ## Repository Structure
 
@@ -63,6 +64,7 @@ javascript-practice/
 │   ├── 03-early-return.js
 │   ├── 04-grade-calculator.js
 │   └── 05-rock-paper-scissors.js
+|
 ├── 05-loops/
 │   ├── README.md
 │   ├── 01-for-loop.js
@@ -85,6 +87,18 @@ javascript-practice/
 │   ├── 08-iife-and-hoisting.js
 │   └── 09-function-practice.js
 │
+├── 07-arrays/
+│   ├── README.md
+│   ├── 01-array-basics.js
+│   ├── 02-array-methods.js
+│   └── ...
+|
+├── 08-objects/
+│   ├── README.md
+│   ├── 01-object-basics.js
+│   ├── 02-property-access-and-computed-properties.js
+│   └── ...
+|
 └── README.md
 ```
 
