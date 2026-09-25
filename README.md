@@ -17,13 +17,13 @@ This repository documents my progress through consistent hands-on JavaScript pra
 
 | # | Topic | Practice |
 |---|---|---|
-| 01 | Variables & Declarations | [View Practice](.01-variables-and-declarations/) |
+| 01 | Variables & Declarations | [View Practice](./01-variables-and-declarations/) |
 | 02 | Data Types | [View Practice](./02-data-types/) |
 | 03 | Operators | [View Practice](./03-operators/) |
 | 04 | Control Flow | [View Practice](./04-control-flow/) |
 | 05 | Loops | [View Practice](./05-loops/) |
 | 06 | Functions | [View Practice](./06-functions/) |
-| 07 | Arrays | [View Practice](./07-arrays/) |
+| 07 | Arrays | [View Practice](./0-arrays/) |
 | 08 | Objects | [View Practice](./08-objects/) |
 
 ## Repository Structure
