@@ -142,3 +142,183 @@ function noReturnValue() {
 }
 
 console.log(noReturnValue()); // undefined
+
+
+// Functions + Arrays
+
+
+// 13. Print All Array Elements
+
+const printArray = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+};
+
+printArray([10, 20, 30, 40]);
+// 10
+// 20
+// 30
+// 40
+
+
+// 14. Find Array Sum
+
+const arraySum = (arr) => {
+    let sum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+
+    return sum;
+};
+
+console.log(arraySum([10, 20, 30]));    // 60
+
+
+// 15. Find Largest Number
+
+const findLargest = (arr) => {
+    let largest = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            largest = arr[i];
+        }
+    }
+
+    return largest;
+};
+
+console.log(findLargest([10, 25, 7, 40, 15]));  // 40
+
+
+// 16. Find Smallest Number
+
+const findSmallest = (arr) => {
+    let smallest = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < smallest) {
+            smallest = arr[i];
+        }
+    }
+
+    return smallest;
+};
+
+console.log(findSmallest([10, 25, 7, 40, 15]));  // 7
+
+
+// 17. Count Even Numbers
+
+const countEven = (arr) => {
+    let count = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            count++;
+        }
+    }
+
+    return count;
+};
+
+console.log(countEven([1, 2, 4, 7, 8, 10]));   // 4
+
+
+// 18. Count Odd Numbers
+
+const countOdd = (arr) => {
+    let count = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 !== 0) {
+            count++;
+        }
+    }
+
+    return count;
+};
+
+console.log(countOdd([1, 2, 4, 7, 8, 10]));   // 2
+
+
+// 19. Find a Number
+
+const findNumber = (arr, num) => {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === num) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+console.log(findNumber([10, 20, 30, 40], 30));  // true
+
+console.log(findNumber([10, 20, 30, 40], 50));  // false
+
+
+// 20. Count Occurrences
+
+const countOccurrences = (arr, num) => {
+    let count = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === num) {
+            count++;
+        }
+    }
+
+    return count;
+};
+
+console.log(countOccurrences([1, 2, 2, 3, 2, 4], 2));   // 3
+
+
+// 21. Reverse an Array
+
+const reverseArray = (arr) => {
+    const reversed = [];
+
+    for (let i = arr.length - 1; i >= 0; i--) {
+        reversed.push(arr[i]);
+    }
+
+    return reversed;
+};
+
+console.log(reverseArray([1, 2, 3, 4, 5]));   // [5, 4, 3, 2, 1]
+
+
+// 22. Find Second Largest
+
+// Assumption:
+// The array contains at least two distinct numbers.
+
+const secondLargest = (arr) => {
+    let largest = -Infinity;
+    let secondLargest = -Infinity;
+
+    for (let i = 0; i < arr.length; i++) {
+        const current = arr[i];
+
+        if (current > largest) {
+            secondLargest = largest;
+            largest = current;
+        }
+        else if (
+            current > secondLargest &&
+            current !== largest
+        ) {
+            secondLargest = current;
+        }
+    }
+
+    return secondLargest;
+};
+
+console.log(secondLargest([10, 5, 25, 8, 20]));   // 20
