@@ -322,3 +322,229 @@ const secondLargest = (arr) => {
 };
 
 console.log(secondLargest([10, 5, 25, 8, 20]));   // 20
+
+
+// Mixed Function Problems
+
+// These problems combine functions with conditions,
+// loops, strings, and arrays.
+
+
+// 23. Find Positive Numbers
+
+const getPositiveNumbers = (arr) => {
+    const positiveNumbers = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > 0) {
+            positiveNumbers.push(arr[i]);
+        }
+    }
+
+    return positiveNumbers;
+};
+
+console.log(getPositiveNumbers([-2, 5, -8, 10, 3]));
+// [5, 10, 3]
+
+
+// 24. Find Numbers Greater Than 10
+
+const greaterThanTen = (arr) => {
+    const result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > 10) {
+            result.push(arr[i]);
+        }
+    }
+
+    return result;
+};
+
+console.log(greaterThanTen([5, 12, 8, 20, 3, 15]));
+// [12, 20, 15]
+
+
+// 25. Calculate Average
+
+// Assumption: The array contains at least one number.
+
+const calculateAverage = (arr) => {
+    let sum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+
+    return sum / arr.length;
+};
+
+console.log(calculateAverage([10, 20, 30, 40])); // 25
+
+
+// 26. Find Second Smallest
+
+// Assumption: The array contains at least two distinct numbers.
+
+const secondSmallest = (arr) => {
+    let smallest = Infinity;
+    let secondSmallest = Infinity;
+
+    for (let i = 0; i < arr.length; i++) {
+        const current = arr[i];
+
+        if (current < smallest) {
+            secondSmallest = smallest;
+            smallest = current;
+        }
+        else if (
+            current < secondSmallest &&
+            current !== smallest
+        ) {
+            secondSmallest = current;
+        }
+    }
+
+    return secondSmallest;
+};
+
+console.log(secondSmallest([10, 5, 25, 8, 20])); // 8
+
+
+// 27. Remove Duplicate Numbers
+
+const removeDuplicates = (arr) => {
+    const result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        let isDuplicate = false;
+
+        for (let j = 0; j < result.length; j++) {
+            if (arr[i] === result[j]) {
+                isDuplicate = true;
+                break;
+            }
+        }
+
+        if (!isDuplicate) {
+            result.push(arr[i]);
+        }
+    }
+
+    return result;
+};
+
+console.log(removeDuplicates([1, 2, 2, 3, 1, 4, 3]));
+// [1, 2, 3, 4]
+
+
+// 28. Find Common Elements
+
+// Returns unique values that exist in both arrays.
+
+const findCommon = (arr1, arr2) => {
+    const result = [];
+
+    for (let i = 0; i < arr1.length; i++) {
+        for (let j = 0; j < arr2.length; j++) {
+            if (
+                arr1[i] === arr2[j] &&
+                !result.includes(arr1[i])
+            ) {
+                result.push(arr1[i]);
+                break;
+            }
+        }
+    }
+
+    return result;
+};
+
+console.log(findCommon([1, 2, 3, 4], [3, 4, 5, 6]));
+// [3, 4]
+
+
+// 29. Count Vowels in an Array of Words
+
+// Counts lowercase vowels.
+
+const countTotalVowels = (arr) => {
+    let count = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            if (
+                arr[i][j] === "a" ||
+                arr[i][j] === "e" ||
+                arr[i][j] === "i" ||
+                arr[i][j] === "o" ||
+                arr[i][j] === "u"
+            ) {
+                count++;
+            }
+        }
+    }
+
+    return count;
+};
+
+console.log(countTotalVowels(["apple", "banana", "cat"])); // 6
+
+
+// 30. Find the Longest Word
+
+const longestWord = (arr) => {
+    let longest = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i].length > longest.length) {
+            longest = arr[i];
+        }
+    }
+
+    return longest;
+};
+
+console.log(longestWord(["cat", "elephant", "dog", "tiger"])); // elephant
+
+
+// 31. Check Palindrome Array
+
+const isArrayPalindrome = (arr) => {
+    for (let i = 0; i < arr.length / 2; i++) {
+        if (arr[i] !== arr[arr.length - 1 - i]) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
+console.log(isArrayPalindrome([1, 2, 3, 2, 1])); // true
+
+console.log(isArrayPalindrome([1, 2, 3, 4])); // false
+
+
+// 32. Find Duplicate Values
+
+const findDuplicates = (arr) => {
+    const duplicates = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] === arr[j]) {
+                if (!duplicates.includes(arr[i])) {
+                    duplicates.push(arr[i]);
+                }
+
+                break;
+            }
+        }
+    }
+
+    return duplicates;
+};
+
+console.log(findDuplicates([1, 2, 3, 2, 4, 1, 5]));
+// [1, 2]
