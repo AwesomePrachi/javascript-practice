@@ -25,6 +25,7 @@ This repository documents my progress through consistent hands-on JavaScript pra
 | 06 | Functions | [View Practice](./06-functions/) |
 | 07 | Arrays | [View Practice](./0-arrays/) |
 | 08 | Objects | [View Practice](./08-objects/) |
+| 09 | DOM | [View Practice](./09-dom/) |
 
 ## Repository Structure
 
@@ -99,6 +100,10 @@ javascript-practice/
 │   ├── 02-property-access-and-computed-properties.js
 │   └── ...
 |
+├── 08-dom/
+│   ├── README.md
+│   ├── 01-selecting-elements
+│   └── ...
 └── README.md
 ```
 
