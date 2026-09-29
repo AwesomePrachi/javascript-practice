@@ -26,6 +26,7 @@ This repository documents my progress through consistent hands-on JavaScript pra
 | 07 | Arrays | [View Practice](./0-arrays/) |
 | 08 | Objects | [View Practice](./08-objects/) |
 | 09 | DOM | [View Practice](./09-dom/) |
+| 10 | Events and Event Handling | [View Practice](./10-events-and-event-handling/) |
 
 ## Repository Structure
 
@@ -100,9 +101,14 @@ javascript-practice/
 │   ├── 02-property-access-and-computed-properties.js
 │   └── ...
 |
-├── 08-dom/
+├── 09-dom/
 │   ├── README.md
 │   ├── 01-selecting-elements
+│   └── ...
+|
+├── 10-events-and-event-handling/
+│   ├── README.md
+│   ├── 01-event-listeners.js
 │   └── ...
 └── README.md
 ```
