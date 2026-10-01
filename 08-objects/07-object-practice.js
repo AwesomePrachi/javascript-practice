@@ -169,3 +169,291 @@ console.log(values[45]);
 // Object property keys are strings or Symbols.
 // The boolean and number keys above are converted
 // to the strings "true" and "45".
+
+
+// Object + Conditions and Problem Solving
+
+
+// 15. Change a Property
+
+const personToUpdate = {
+    name: "Rahul",
+    age: 25
+};
+
+personToUpdate.age = 26;
+
+console.log(personToUpdate);
+// { name: "Rahul", age: 26 }
+
+
+// 16. Add a New Property
+
+const car = {
+    brand: "Toyota",
+    model: "Fortuner"
+};
+
+car.year = 2026;
+
+console.log(car);
+// { brand: "Toyota", model: "Fortuner", year: 2026 }
+
+
+// 17. Delete a Property
+
+const userToUpdate = {
+    name: "Amit",
+    age: 22,
+    city: "Mumbai"
+};
+
+delete userToUpdate.city;
+
+console.log(userToUpdate);
+// { name: "Amit", age: 22 }
+
+
+// 18. Check a Property Value
+
+const product = {
+    name: "Laptop",
+    price: 50000,
+    brand: "HP"
+};
+
+if (product.price > 40000) {
+    console.log("Expensive");
+} else {
+    console.log("Affordable");
+}
+
+
+// 19. Update Multiple Properties
+
+const employee = {
+    name: "Neha",
+    age: 24,
+    salary: 30000
+};
+
+Object.assign(employee, {
+    age: 25,
+    salary: 35000
+});
+
+console.log(employee);
+// { name: "Neha", age: 25, salary: 35000 }
+
+
+// 20. Object + if...else
+
+const resultStudent = {
+    name: "Riya",
+    marks: 75
+};
+
+if (resultStudent.marks >= 50) {
+    console.log("Pass");
+} else {
+    console.log("Fail");
+}
+
+
+// 21. Find the Older Person
+
+const person1 = {
+    name: "Rahul",
+    age: 22
+};
+
+const person2 = {
+    name: "Amit",
+    age: 25
+};
+
+if (person1.age > person2.age) {
+    console.log(person1.name);
+} else {
+    console.log(person2.name);
+}
+
+// Amit
+
+
+// 22. Object Property Calculation
+
+const productDetails = {
+    name: "Phone",
+    price: 20000,
+    quantity: 3
+};
+
+const totalPrice =
+    productDetails.price * productDetails.quantity;
+
+console.log(`Total price: ${totalPrice}`);
+// Total price: 60000
+
+
+// 23. Object-Based Grade Calculator
+
+const gradedStudent = {
+    name: "Prachi",
+    marks: 82
+};
+
+function getGrade(student) {
+    const { marks } = student;
+
+    if (marks >= 90) {
+        return "A";
+    } else if (marks >= 75) {
+        return "B";
+    } else if (marks >= 50) {
+        return "C";
+    } else {
+        return "Fail";
+    }
+}
+
+const grade = getGrade(gradedStudent);
+
+console.log(
+    `${gradedStudent.name} got grade ${grade}`
+);
+// Prachi got grade B
+
+
+// Object + for...in
+
+
+// 24. Count Object Properties
+
+const account = {
+    name: "Amit",
+    age: 25,
+    city: "Mumbai",
+    job: "Developer"
+};
+
+let propertyCount = 0;
+
+for (const key in account) {
+    propertyCount++;
+}
+
+console.log(propertyCount);
+// 4
+
+
+// 25. Calculate Total of Object Values
+
+const marks = {
+    math: 80,
+    science: 75,
+    english: 90,
+    computer: 85
+};
+
+let totalMarks = 0;
+
+for (const key in marks) {
+    totalMarks += marks[key];
+}
+
+console.log(totalMarks);
+// 330
+
+
+// 26. Calculate Average of Object Values
+
+let marksSum = 0;
+let subjectCount = 0;
+
+for (const key in marks) {
+    marksSum += marks[key];
+    subjectCount++;
+}
+
+const averageMarks = marksSum / subjectCount;
+
+console.log(averageMarks);
+// 82.5
+
+
+// 27. Count Values Greater Than 50
+
+const subjectMarks = {
+    math: 80,
+    science: 45,
+    english: 72,
+    computer: 35,
+    history: 90
+};
+
+let aboveFifty = 0;
+
+for (const key in subjectMarks) {
+    if (subjectMarks[key] > 50) {
+        aboveFifty++;
+    }
+}
+
+console.log(aboveFifty);
+// 3
+
+
+// 28. Find the Largest Value and Its Key
+
+const scores = {
+    Rahul: 75,
+    Amit: 92,
+    Neha: 88,
+    Priya: 81
+};
+
+let largestScore = -Infinity;
+let topScorer = "";
+
+for (const key in scores) {
+    if (scores[key] > largestScore) {
+        largestScore = scores[key];
+        topScorer = key;
+    }
+}
+
+console.log(largestScore);
+// 92
+
+console.log(topScorer);
+// Amit
+
+
+// 29. Find a Specific Property
+
+const studentDetails = {
+    name: "Prachi",
+    age: 22,
+    course: "MERN Stack",
+    city: "Bhiwandi"
+};
+
+const searchProperty = "course";
+
+let propertyFound = false;
+
+for (const key in studentDetails) {
+    if (key === searchProperty) {
+        propertyFound = true;
+        break;
+    }
+}
+
+if (propertyFound) {
+    console.log("Property found");
+} else {
+    console.log("Property not found");
+}
+
+// Property found
