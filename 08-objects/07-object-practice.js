@@ -289,8 +289,7 @@ const productDetails = {
     quantity: 3
 };
 
-const totalPrice =
-    productDetails.price * productDetails.quantity;
+const totalPrice = productDetails.price * productDetails.quantity;
 
 console.log(`Total price: ${totalPrice}`);
 // Total price: 60000
@@ -319,9 +318,7 @@ function getGrade(student) {
 
 const grade = getGrade(gradedStudent);
 
-console.log(
-    `${gradedStudent.name} got grade ${grade}`
-);
+console.log(`${gradedStudent.name} got grade ${grade}`);
 // Prachi got grade B
 
 
@@ -368,15 +365,15 @@ console.log(totalMarks);
 
 // 26. Calculate Average of Object Values
 
-let marksSum = 0;
+let marksTotal = 0;
 let subjectCount = 0;
 
 for (const key in marks) {
-    marksSum += marks[key];
+    marksTotal += marks[key];
     subjectCount++;
 }
 
-const averageMarks = marksSum / subjectCount;
+const averageMarks = marksTotal / subjectCount;
 
 console.log(averageMarks);
 // 82.5
@@ -457,3 +454,179 @@ if (propertyFound) {
 }
 
 // Property found
+
+
+// Objects + Arrays
+
+
+// 30. Object Containing an Array
+
+const studentWithSubjects = {
+    name: "Prachi",
+    subjects: [
+        "JavaScript",
+        "React",
+        "Python",
+        "Database"
+    ]
+};
+
+console.log(studentWithSubjects);
+
+
+// 31. Print Array Items Inside an Object
+
+studentWithSubjects.subjects.forEach((subject) => {
+    console.log(subject);
+});
+
+
+// 32. Add an Item to an Object's Array
+
+studentWithSubjects.subjects.push("Node.js");
+
+console.log(studentWithSubjects.subjects);
+
+
+// 33. Calculate Total Marks from an Object's Array
+
+const studentMarks = {
+    name: "Rahul",
+    marks: [75, 82, 91, 68]
+};
+
+let totalStudentMarks = 0;
+
+for (const mark of studentMarks.marks) {
+    totalStudentMarks += mark;
+}
+
+console.log(`Total marks: ${totalStudentMarks}`);
+// Total marks: 316
+
+
+// 34. Calculate Average Marks from an Object's Array
+
+let marksSum = 0;
+
+for (const mark of studentMarks.marks) {
+    marksSum += mark;
+}
+
+const marksAverage =
+    marksSum / studentMarks.marks.length;
+
+console.log(`Average marks: ${marksAverage}`);
+// Average marks: 79
+
+
+// Arrays of Objects
+
+
+// 35. Iterate Over an Array of Objects
+
+const students = [
+    { name: "Rahul", age: 21 },
+    { name: "Amit", age: 23 },
+    { name: "Neha", age: 22 }
+];
+
+for (const student of students) {
+    console.log(`${student.name} - ${student.age}`);
+}
+
+
+// 36. Find a Student by Name
+
+for (const student of students) {
+    if (student.name === "Neha") {
+        console.log(`${student.name} - ${student.age}`);
+    }
+}
+
+
+// 37. Find the Oldest Student
+
+let oldestStudent = students[0];
+
+for (const student of students) {
+    if (student.age > oldestStudent.age) {
+        oldestStudent = student;
+    }
+}
+
+console.log(oldestStudent);
+// { name: "Amit", age: 23 }
+
+
+// 38. Filter Students by Marks
+
+const studentsWithMarks = [
+    { name: "Rahul", marks: 45 },
+    { name: "Amit", marks: 78 },
+    { name: "Neha", marks: 92 },
+    { name: "Priya", marks: 38 }
+];
+
+for (const student of studentsWithMarks) {
+    if (student.marks >= 50) {
+        console.log(student.name);
+    }
+}
+
+
+// Student Data Analysis
+
+
+// 39. Count Total Students
+
+let studentCount = 0;
+
+for (const student of studentsWithMarks) {
+    studentCount++;
+}
+
+console.log(`Total students: ${studentCount}`);
+// Total students: 4
+
+
+// 40. Count Students Who Passed
+
+let passedCount = 0;
+
+for (const student of studentsWithMarks) {
+    if (student.marks >= 50) {
+        passedCount++;
+    }
+}
+
+console.log(`Passed students: ${passedCount}`);
+// Passed students: 2
+
+
+// 41. Count Students Who Failed
+
+let failedCount = 0;
+
+for (const student of studentsWithMarks) {
+    if (student.marks < 50) {
+        failedCount++;
+    }
+}
+
+console.log(`Failed students: ${failedCount}`);
+// Failed students: 2
+
+
+// 42. Find the Student with the Highest Marks
+
+let highestScoringStudent = studentsWithMarks[0];
+
+for (const student of studentsWithMarks) {
+    if (student.marks > highestScoringStudent.marks) {
+        highestScoringStudent = student;
+    }
+}
+
+console.log(highestScoringStudent);
+// { name: "Neha", marks: 92 }
