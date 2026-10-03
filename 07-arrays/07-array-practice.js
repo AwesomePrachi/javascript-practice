@@ -279,3 +279,96 @@ cart.splice(3, 1);
 
 console.log(cart.includes("shoes")); // true
 console.log(cart); // ["cap", "shirt", "shoes", "bag"]
+
+
+// map() Practice
+
+
+// 26. Add 5 to Every Number
+
+const numbersToIncrease = [10, 20, 30, 40];
+
+const increasedNumbers = numbersToIncrease.map((number) => {
+    return number + 5;
+});
+
+console.log(increasedNumbers);
+// [15, 25, 35, 45]
+
+
+// 27. Add Tax to Prices
+
+const productPrices = [100, 200, 300, 400];
+
+const pricesWithTax = productPrices.map((price) => {
+    return price + (price * 0.10);
+});
+
+console.log(pricesWithTax);
+// [110, 220, 330, 440]
+
+
+// 28. Convert Names to Uppercase
+
+const friendNames = ["rahul", "amit", "neha", "priya"];
+
+const uppercaseNames = friendNames.map((name) => {
+    return name.toUpperCase();
+});
+
+console.log(uppercaseNames);
+// ["RAHUL", "AMIT", "NEHA", "PRIYA"]
+
+
+// 29. Format Prices with Currency Symbol
+
+const prices = [100, 250, 500, 1000];
+
+const formattedPrices = prices.map((price) => {
+    return `₹${price}`;
+});
+
+console.log(formattedPrices);
+// ["₹100", "₹250", "₹500", "₹1000"]
+
+
+// 30. Convert Ages to Birth Years
+
+const ages = [20, 25, 30, 18];
+const currentYear = 2026;
+
+const birthYears = ages.map((age) => {
+    return currentYear - age;
+});
+
+console.log(birthYears);
+// [2006, 2001, 1996, 2008]
+
+
+// 31. Convert Minutes to Seconds
+
+const minutes = [1, 2, 5, 10];
+
+const seconds = minutes.map((minute) => {
+    return minute * 60;
+});
+
+console.log(seconds);
+// [60, 120, 300, 600]
+
+
+// 32. Add Availability Status to Products
+
+const products = ["shirt", "shoes", "watch", "bag"];
+
+const availableProducts = products.map((product) => {
+    return `${product} - Available`;
+});
+
+console.log(availableProducts);
+// [
+//     "shirt - Available",
+//     "shoes - Available",
+//     "watch - Available",
+//     "bag - Available"
+// ]
