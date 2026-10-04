@@ -120,9 +120,9 @@ console.log(hasLowScore); // true
 
 // 13. Check Whether All Numbers Are Even
 
-const evenNumbers = [2, 4, 6, 8, 10];
+const evenNumbersList = [2, 4, 6, 8, 10];
 
-const allEven = evenNumbers.every((number) => {
+const allEven = evenNumbersList.every((number) => {
     return number % 2 === 0;
 });
 
@@ -372,3 +372,164 @@ console.log(availableProducts);
 //     "watch - Available",
 //     "bag - Available"
 // ]
+
+
+// filter() Practice
+
+
+// 33. Filter Even Numbers
+
+const numbersForEvenFilter = [10, 15, 22, 7, 8, 13, 16];
+
+const evenNumbers = numbersForEvenFilter.filter((number) => {
+    return number % 2 === 0;
+});
+
+console.log(evenNumbers);
+// [10, 22, 8, 16]
+
+
+// 34. Filter Passing Marks
+
+const marksForFilter = [35, 72, 28, 90, 45, 18, 60];
+
+const passedMarks = marksForFilter.filter((mark) => {
+    return mark >= 40;
+});
+
+console.log(passedMarks);
+// [72, 90, 45, 60]
+
+
+// 35. Filter Names Longer Than 5 Characters
+
+const namesForFilter = [
+    "Rahul",
+    "Prachi",
+    "Amit",
+    "Priyanka",
+    "Neha",
+    "Sanjay"
+];
+
+const longNames = namesForFilter.filter((name) => {
+    return name.length > 5;
+});
+
+console.log(longNames);
+// ["Prachi", "Priyanka", "Sanjay"]
+
+
+// 36. Filter Available Products
+
+const productsByAvailability = [
+    { name: "Laptop", available: true },
+    { name: "Phone", available: false },
+    { name: "Mouse", available: true },
+    { name: "Keyboard", available: false }
+];
+
+const filteredProducts = productsByAvailability.filter((product) => {
+    return product.available === true;
+});
+
+console.log(filteredProducts);
+// [
+//     { name: "Laptop", available: true },
+//     { name: "Mouse", available: true }
+// ]
+
+
+// 37. Filter Expensive Products
+
+const productsByPrice = [
+    { name: "Shirt", price: 500 },
+    { name: "Shoes", price: 1500 },
+    { name: "Watch", price: 2500 },
+    { name: "Bag", price: 800 }
+];
+
+const expensiveProducts = productsByPrice.filter((product) => {
+    return product.price > 1000;
+});
+
+console.log(expensiveProducts);
+// [
+//     { name: "Shoes", price: 1500 },
+//     { name: "Watch", price: 2500 }
+// ]
+
+
+// 38. Filter Passing Students
+
+const studentsByMarks = [
+    { name: "Rahul", marks: 75 },
+    { name: "Amit", marks: 32 },
+    { name: "Priya", marks: 88 },
+    { name: "Neha", marks: 25 },
+    { name: "Sanjay", marks: 64 }
+];
+
+const passedStudents = studentsByMarks.filter((student) => {
+    return student.marks >= 40;
+});
+
+console.log(passedStudents);
+// [
+//     { name: "Rahul", marks: 75 },
+//     { name: "Priya", marks: 88 },
+//     { name: "Sanjay", marks: 64 }
+// ]
+
+
+// find() Practice
+
+
+// 39. Find a Product by Name
+
+const productsForSearch = [
+    { name: "Shirt", price: 500 },
+    { name: "Shoes", price: 1500 },
+    { name: "Watch", price: 2500 }
+];
+
+const foundProduct = productsForSearch.find((product) => {
+    return product.name === "Shoes";
+});
+
+console.log(foundProduct);
+// { name: "Shoes", price: 1500 }
+
+
+// 40. Find the First Expensive Product
+
+const productsForPriceSearch = [
+    { name: "Pen", price: 50 },
+    { name: "Bag", price: 800 },
+    { name: "Shoes", price: 1500 },
+    { name: "Watch", price: 2500 }
+];
+
+const firstExpensiveProduct = productsForPriceSearch.find((product) => {
+    return product.price > 1000;
+});
+
+console.log(firstExpensiveProduct);
+// { name: "Shoes", price: 1500 }
+
+
+// 41. Find the First Active User
+
+const users = [
+    { id: 1, name: "Rahul", isActive: false },
+    { id: 2, name: "Amit", isActive: false },
+    { id: 3, name: "Prachi", isActive: true },
+    { id: 4, name: "Neha", isActive: true }
+];
+
+const activeUser = users.find((user) => {
+    return user.isActive === true;
+});
+
+console.log(activeUser);
+// { id: 3, name: "Prachi", isActive: true }
