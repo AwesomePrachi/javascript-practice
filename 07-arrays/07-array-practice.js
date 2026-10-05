@@ -533,3 +533,190 @@ const activeUser = users.find((user) => {
 
 console.log(activeUser);
 // { id: 3, name: "Prachi", isActive: true }
+
+
+// reduce() Practice
+
+
+// 42. Multiply All Numbers
+
+const numbersForMultiplication = [
+    10, 15, 22, 7, 8, 13, 16
+];
+
+const multipliedValue = numbersForMultiplication.reduce(
+    (product, number) => {
+        return product * number;
+    },
+    1
+);
+
+console.log(multipliedValue);
+
+
+// 43. Find the Largest Number with reduce()
+
+const numbersForLargest = [
+    10, 15, 22, 7, 8, 13, 16
+];
+
+const largestWithReduce = numbersForLargest.reduce(
+    (max, number) => {
+        if (number > max) {
+            return number;
+        }
+
+        return max;
+    },
+    -Infinity
+);
+
+console.log(largestWithReduce);
+// 22
+
+
+// 44. Find the Smallest Number with reduce()
+
+const numbersForSmallest = [
+    10, 15, 22, 7, 8, 13, 16
+];
+
+const smallestWithReduce = numbersForSmallest.reduce(
+    (min, number) => {
+        if (number < min) {
+            return number;
+        }
+
+        return min;
+    },
+    Infinity
+);
+
+console.log(smallestWithReduce);
+// 7
+
+
+// 45. Count Even Numbers with reduce()
+
+const numbersForEvenCount = [
+    10, 15, 22, 7, 8, 13, 16
+];
+
+const evenNumberCount = numbersForEvenCount.reduce(
+    (count, number) => {
+        if (number % 2 === 0) {
+            count++;
+        }
+
+        return count;
+    },
+    0
+);
+
+console.log(evenNumberCount);
+// 4
+
+
+// 46. Calculate Total Cart Value
+
+const cartItems = [
+    { name: "Shirt", price: 500 },
+    { name: "Shoes", price: 1500 },
+    { name: "Watch", price: 2000 }
+];
+
+const totalCartValue = cartItems.reduce(
+    (total, item) => {
+        return total + item.price;
+    },
+    0
+);
+
+console.log(totalCartValue);
+// 4000
+
+
+// 47. Calculate Total Marks
+
+const studentResults = [
+    { name: "Rahul", marks: 75 },
+    { name: "Amit", marks: 62 },
+    { name: "Priya", marks: 88 },
+    { name: "Neha", marks: 45 }
+];
+
+const totalMarks = studentResults.reduce(
+    (total, student) => {
+        return total + student.marks;
+    },
+    0
+);
+
+console.log(totalMarks);
+// 270
+
+
+// 48. Calculate Total Order Value
+
+const orders = [
+    { product: "Laptop", price: 50000, quantity: 1 },
+    { product: "Mouse", price: 1000, quantity: 2 },
+    { product: "Keyboard", price: 2000, quantity: 1 }
+];
+
+const totalOrderValue = orders.reduce(
+    (total, order) => {
+        return total + (order.price * order.quantity);
+    },
+    0
+);
+
+console.log(totalOrderValue);
+// 54000
+
+
+// 49. Flatten Nested Arrays
+
+const nestedArrays = [
+    [1, 2],
+    [3, 4],
+    [5, 6]
+];
+
+const flattenedArray = nestedArrays.reduce(
+    (result, currentArray) => {
+        return result.concat(currentArray);
+    },
+    []
+);
+
+console.log(flattenedArray);
+// [1, 2, 3, 4, 5, 6]
+
+
+// 50. Count Fruit Occurrences
+
+const fruitBasket = [
+    "Apple",
+    "Banana",
+    "Apple",
+    "Mango",
+    "Banana",
+    "Apple"
+];
+
+const fruitCounts = fruitBasket.reduce(
+    (result, fruit) => {
+        if (result[fruit]) {
+            result[fruit]++;
+        } else {
+            result[fruit] = 1;
+        }
+
+        return result;
+    },
+    {}
+);
+
+console.log(fruitCounts);
+// { Apple: 3, Banana: 2, Mango: 1 }
