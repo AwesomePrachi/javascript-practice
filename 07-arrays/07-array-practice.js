@@ -840,3 +840,30 @@ const studentsWithHighScores = studentResultData
 
 console.log(studentsWithHighScores);
 // ["Amit", "Prachi", "Sanjay"]
+
+
+// Arrays + Objects with reduce()
+
+
+// 58. Find the Most Expensive Product
+
+const productsForPriceComparison = [
+    { name: "Laptop", price: 50000 },
+    { name: "Mouse", price: 1000 },
+    { name: "Keyboard", price: 2000 },
+    { name: "Monitor", price: 15000 }
+];
+
+const mostExpensiveProduct = productsForPriceComparison.reduce(
+    (mostExpensive, product) => {
+        if (product.price > mostExpensive.price) {
+            return product;
+        }
+
+        return mostExpensive;
+    },
+    productsForPriceComparison[0]
+);
+
+console.log(mostExpensiveProduct);
+// { name: "Laptop", price: 50000 }
