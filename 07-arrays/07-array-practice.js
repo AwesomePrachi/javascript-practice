@@ -720,3 +720,123 @@ const fruitCounts = fruitBasket.reduce(
 
 console.log(fruitCounts);
 // { Apple: 3, Banana: 2, Mango: 1 }
+
+
+// Combining Array Methods Practice
+
+
+// 50. Get Even Numbers and Double Them
+
+const numbersForEvenDoubled = [10, 15, 20, 25, 30, 35];
+
+const evenDoubled = numbersForEvenDoubled
+    .filter(number => number % 2 === 0)
+    .map(number => number * 2);
+
+console.log(evenDoubled);
+// [20, 40, 60]
+
+
+// 51. Get Numbers Greater Than 10 and Square Them
+
+const numbersForSquaring = [5, 12, 8, 20, 3, 15];
+
+const squaredNumbers = numbersForSquaring
+    .filter(number => number > 10)
+    .map(number => number * number);
+
+console.log(squaredNumbers);
+// [144, 400, 225]
+
+
+// 52. Get Names Longer Than 5 Characters and Uppercase Them
+
+const namesForUppercase = [
+    "Rahul",
+    "Prachi",
+    "Amit",
+    "Priyanka",
+    "Neha",
+    "Sanjay"
+];
+
+const longNamesUppercase = namesForUppercase
+    .filter(name => name.length > 5)
+    .map(name => name.toUpperCase());
+
+console.log(longNamesUppercase);
+// ["PRACHI", "PRIYANKA", "SANJAY"]
+
+
+// 53. Calculate the Sum of Even Numbers
+
+const numbersForEvenSum = [10, 15, 20, 25, 30, 35];
+
+const evenSum = numbersForEvenSum
+    .filter(number => number % 2 === 0)
+    .reduce((sum, number) => sum + number, 0);
+
+console.log(evenSum);
+// 60
+
+
+// 54. Calculate Total Price of Available Products
+
+const productsWithAvailability = [
+    { name: "Laptop", price: 50000, available: true },
+    { name: "Mouse", price: 1000, available: false },
+    { name: "Keyboard", price: 2000, available: true },
+    { name: "Monitor", price: 15000, available: true }
+];
+
+const availableProductsTotalPrice = productsWithAvailability
+    .filter(product => product.available)
+    .reduce((total, product) => total + product.price, 0);
+
+console.log(availableProductsTotalPrice);
+// 67000
+
+
+// 55. Get Names of Available Products
+
+const availableProductNames = productsWithAvailability
+    .filter(product => product.available)
+    .map(product => product.name);
+
+console.log(availableProductNames);
+// ["Laptop", "Keyboard", "Monitor"]
+
+
+// 56. Find the First Student Who Passed
+
+const studentsWhoPassed = [
+    { name: "Rahul", marks: 32 },
+    { name: "Amit", marks: 38 },
+    { name: "Prachi", marks: 75 },
+    { name: "Neha", marks: 88 }
+];
+
+const firstPassedStudent = studentsWhoPassed.find(
+    student => student.marks >= 40
+);
+
+console.log(firstPassedStudent);
+// { name: "Prachi", marks: 75 }
+
+
+// 57. Get Names of Students Who Scored 60+
+
+const studentResultData = [
+    { name: "Rahul", marks: 55 },
+    { name: "Amit", marks: 72 },
+    { name: "Prachi", marks: 88 },
+    { name: "Neha", marks: 45 },
+    { name: "Sanjay", marks: 65 }
+];
+
+const studentsWithHighScores = studentResultData
+    .filter(student => student.marks >= 60)
+    .map(student => student.name);
+
+console.log(studentsWithHighScores);
+// ["Amit", "Prachi", "Sanjay"]
