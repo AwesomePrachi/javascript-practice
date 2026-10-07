@@ -1173,3 +1173,137 @@ console.log(safeUser);
 //     email: "prachi@gmail.com",
 //     city: "Bhiwandi"
 // }
+
+
+// Optional Chaining and Nullish Coalescing
+
+
+// 66. Nullish Coalescing Operator
+
+const userInfo = {
+    name: "Prachi"
+};
+
+const cityFromUsernfo = userInfo.city ?? "City not available";
+
+console.log(cityFromUsernfo);
+// City not available
+
+// ?? uses the fallback only when the value is
+// null or undefined.
+
+
+// 67. Optional Chaining with Nullish Coalescing
+
+const profileData = {
+    name: "Prachi",
+    address: {
+        city: "Bhiwandi"
+    }
+};
+
+const profileCity =
+    profileData?.address?.city ?? "Unknown city";
+
+const profilePhone =
+    profileData?.address?.phone ?? "Phone not available";
+
+console.log(profileCity);
+// Bhiwandi
+
+console.log(profilePhone);
+// Phone not available
+
+
+// 68. Understand || vs ??
+
+const userPreferences = {
+    age: 0
+};
+
+console.log(userPreferences.age || 18);
+// 18
+
+console.log(userPreferences.age ?? 18);
+// 0
+
+// || uses the fallback for any falsy value,
+// including 0, "", false, null, and undefined.
+//
+// ?? uses the fallback only for null or undefined.
+
+
+// 69. Optional Chaining with Arrays
+
+const studentNames = [
+    { name: "Rahul" },
+    { name: "Amit" }
+];
+
+console.log(studentNames[0]?.name);
+// Rahul
+
+console.log(studentNames[2]?.name ?? "Student not found");
+// Student not found
+
+
+// 70. Real API-Style Object
+
+const apiResponse = {
+    user: {
+        profile: {
+            name: "Prachi",
+            address: {
+                city: "Bhiwandi"
+            }
+        }
+    }
+};
+
+console.log(apiResponse?.user?.profile?.name);
+// Prachi
+
+console.log(apiResponse?.user?.profile?.address?.city);
+// Bhiwandi
+
+console.log(
+    apiResponse?.user?.profile?.address?.phone ??
+    "Phone not available"
+);
+// Phone not available
+
+
+// 71. Mini Real-World Challenge
+
+const accountData = {
+    id: 101,
+    name: "Prachi",
+    profile: {
+        contact: {
+            email: "prachi@gmail.com"
+        }
+    }
+};
+
+const accountName = accountData?.name ?? "Unknown user";
+
+const accountEmail =
+    accountData?.profile?.contact?.email ?? "Email not available";
+
+const accountPhone =
+    accountData?.profile?.contact?.phone ?? "Phone not available";
+
+const accountCity =
+    accountData?.profile?.city ?? "City not available";
+
+console.log("Name:", accountName);
+// Name: Prachi
+
+console.log("Email:", accountEmail);
+// Email: prachi@gmail.com
+
+console.log("Phone:", accountPhone);
+// Phone not available
+
+console.log("City:", accountCity);
+// City not available
