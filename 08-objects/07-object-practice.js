@@ -993,3 +993,183 @@ console.log("Job:", empTitle);
 console.log("Salary:", empSalary);
 console.log("City:", empCity);
 console.log("State:", empState);
+
+
+// Object Spread and Rest
+
+
+// 59. Copy and Update an Object with Spread Syntax
+
+const baseUser = {
+    name: "Prachi",
+    age: 22
+};
+
+const updatedUser = {
+    ...baseUser,
+    age: 23,
+    city: "Mumbai"
+};
+
+console.log(updatedUser);
+// { name: "Prachi", age: 23, city: "Mumbai" }
+
+console.log(baseUser);
+// { name: "Prachi", age: 22 }
+
+
+// 60. Combine Two Objects
+
+const personalDetails = {
+    name: "Prachi",
+    age: 22
+};
+
+const contactDetails = {
+    email: "prachi@gmail.com",
+    phone: "9876543210"
+};
+
+const combinedUser = {
+    ...personalDetails,
+    ...contactDetails
+};
+
+console.log(combinedUser);
+// {
+//     name: "Prachi",
+//     age: 22,
+//     email: "prachi@gmail.com",
+//     phone: "9876543210"
+// }
+
+
+// 61. Duplicate Properties with Spread Syntax
+
+const firstUser = {
+    name: "Rahul",
+    age: 20
+};
+
+const secondUser = {
+    name: "Amit",
+    city: "Mumbai"
+};
+
+const mergedUser = {
+    ...firstUser,
+    ...secondUser
+};
+
+console.log(mergedUser);
+// {
+//     name: "Amit",
+//     age: 20,
+//     city: "Mumbai"
+// }
+
+// When properties have the same key, the later value wins.
+
+
+// 62. Object Rest Syntax
+
+const userProfile = {
+    username: "Prachi",
+    age: 22,
+    city: "Bhiwandi",
+    job: "Developer"
+};
+
+const {
+    username,
+    ...otherUserDetails
+} = userProfile;
+
+console.log(username);
+// Prachi
+
+console.log(otherUserDetails);
+// {
+//     age: 22,
+//     city: "Bhiwandi",
+//     job: "Developer"
+// }
+
+
+// 63. Create a New Object Without a Property
+
+const productInformation = {
+    name: "Laptop",
+    price: 50000,
+    brand: "HP",
+    category: "Electronics"
+};
+
+const {
+    price: productPrice,
+    ...productWithoutPrice
+} = productInformation;
+
+console.log(productWithoutPrice);
+// {
+//     name: "Laptop",
+//     brand: "HP",
+//     category: "Electronics"
+// }
+
+
+// 64. Update a Nested Object with Spread Syntax
+
+const aStudentData = {
+    name: "Prachi",
+    marks: {
+        javascript: 85,
+        html: 78,
+        css: 92
+    }
+};
+
+const updatedStudentData = {
+    ...aStudentData,
+    marks: {
+        ...aStudentData.marks,
+        javascript: 90
+    }
+};
+
+console.log(updatedStudentData);
+// {
+//     name: "Prachi",
+//     marks: {
+//         javascript: 90,
+//         html: 78,
+//         css: 92
+//     }
+// }
+
+console.log(studentData);
+// Original object remains unchanged.
+
+
+// 65. Mini Real-World Challenge
+
+const accountUser = {
+    id: 101,
+    name: "Prachi",
+    email: "prachi@gmail.com",
+    password: "abc123",
+    city: "Bhiwandi"
+};
+
+const {
+    password,
+    ...safeUser
+} = accountUser;
+
+console.log(safeUser);
+// {
+//     id: 101,
+//     name: "Prachi",
+//     email: "prachi@gmail.com",
+//     city: "Bhiwandi"
+// }
