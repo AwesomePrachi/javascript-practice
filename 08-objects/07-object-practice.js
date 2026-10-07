@@ -758,3 +758,123 @@ if (passedAllSubjects) {
 } else {
     console.log("Student failed.");
 }
+
+
+// Object.keys(), Object.values(), Object.entries()
+
+
+// 48. Get Object Keys and Values
+
+const userData = {
+    name: "Rahul",
+    age: 25,
+    city: "Mumbai",
+    job: "Developer"
+};
+
+const userKeys = Object.keys(userData);
+const userValues = Object.values(userData);
+
+console.log("Keys:", userKeys);
+console.log("Values:", userValues);
+console.log("Number of properties:", userKeys.length);
+
+
+// 49. Iterate Over Object.keys()
+
+for (const key of userKeys) {
+    console.log(`${key}: ${userData[key]}`);
+}
+
+
+// 50. Calculate Total Using Object.values()
+
+const productPrices = {
+    shirt: 500,
+    shoes: 1500,
+    watch: 2000,
+    pant: 500
+};
+
+const totalProductPrice = Object.values(productPrices).reduce(
+    (total, price) => total + price,
+    0
+);
+
+console.log("Total price:", totalProductPrice);
+// Total price: 4500
+
+
+// 51. Find the Most Expensive Product Using Object.entries()
+
+const priceEntries = Object.entries(productPrices);
+
+let mostExpensivePrice = -Infinity;
+let mostExpensiveProduct = "";
+
+for (const [product, price] of priceEntries) {
+    if (price > mostExpensivePrice) {
+        mostExpensivePrice = price;
+        mostExpensiveProduct = product;
+    }
+}
+
+console.log("Most expensive product:", mostExpensiveProduct);
+// watch
+
+console.log("Price:", mostExpensivePrice);
+// 2000
+
+
+// 52. Analyze Nested Object Data
+
+const studentAnalysis = {
+    name: "Prachi",
+    age: 22,
+    marks: {
+        javascript: 85,
+        html: 78,
+        css: 92
+    }
+};
+
+// Student name
+
+console.log("Student:", studentAnalysis.name);
+
+// Number of subjects
+
+const allSubjectCount = Object.keys(studentAnalysis.marks).length;
+
+console.log("Number of subjects:", allSubjectCount);
+
+// Total marks
+
+let sumOfMarks = 0;
+
+for (const mark of Object.values(studentAnalysis.marks)) {
+    sumOfMarks += mark;
+}
+
+console.log("Total marks:", sumOfMarks);
+
+// Average marks
+
+const averageOfMarks = totalMarks / subjectCount;
+
+console.log("Average marks:", averageOfMarks);
+
+// Highest marks and subject
+
+let highestMark = -Infinity;
+let highestSubject = "";
+
+for (const [subject, mark] of Object.entries(studentAnalysis.marks)) {
+    if (mark > highestMark) {
+        highestMark = mark;
+        highestSubject = subject;
+    }
+}
+
+console.log("Highest marks:", highestMark);
+console.log("Highest-scoring subject:", highestSubject);
