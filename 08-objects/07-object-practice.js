@@ -878,3 +878,118 @@ for (const [subject, mark] of Object.entries(studentAnalysis.marks)) {
 
 console.log("Highest marks:", highestMark);
 console.log("Highest-scoring subject:", highestSubject);
+
+
+// Object Destructuring
+
+
+// 53. Default Values During Destructuring
+
+const specificUser = {
+    userName: "Prachi",
+    userAge: 22
+};
+
+const {
+    userName,
+    userAge,
+    userCity = "Unknown"
+} = specificUser;
+
+console.log("Username:", userName);
+console.log("Age:", userAge);
+console.log("City:", userCity);
+
+
+// 54. Destructure a Nested Object
+
+const studentDetail = {
+    name: "Rahul",
+    marks: {
+        javascript: 85,
+        html: 78,
+        css: 92
+    }
+};
+
+const {
+    javascript,
+    html,
+    css
+} = studentDetail.marks;
+
+console.log("Student:", studentDetail.name);
+console.log("JavaScript:", javascript);
+console.log("HTML:", html);
+console.log("CSS:", css);
+
+
+// 55. Destructure and Calculate
+
+const productInfo = {
+    name: "Shoes",
+    price: 1500,
+    quantity: 3
+};
+
+const { price, quantity } = productInfo;
+
+const totalOfProductPrice = price * quantity;
+
+console.log("Total price:", totalOfProductPrice);
+// 4500
+
+
+// 56. Destructure Function Parameters
+
+const studentResult = {
+    name: "Amit",
+    marks: 85
+};
+
+const showStudent = ({ name, marks }) => {
+    console.log(`${name} scored ${marks} marks.`);
+};
+
+showStudent(studentResult);
+// Amit scored 85 marks.
+
+
+// 57. Destructure Objects from an Array
+
+const studentMarksData = [
+    { name: "Rahul", marks: 75 },
+    { name: "Amit", marks: 92 },
+    { name: "Neha", marks: 88 }
+];
+
+for (const { name, marks } of studentMarksData) {
+    console.log(`${name} - ${marks}`);
+}
+
+
+// 58. Mini Destructuring Challenge
+
+const employeeDetails = {
+    empName: "Prachi",
+    empAge: 22,
+    empJob: {
+        empTitle: "Node.js Developer",
+        empSalary: 30000
+    },
+    empAddress: {
+        empCity: "Bhiwandi",
+        empState: "Maharashtra"
+    }
+};
+
+const { empName, empAge } = employeeDetails;
+const { empTitle, empSalary } = employeeDetails.job;
+const { empCity, empState } = employeeDetails.address;
+
+console.log("Name:", empName);
+console.log("Age:", empAge);
+console.log("Job:", empTitle);
+console.log("Salary:", empSalary);
+console.log("City:", empCity);
+console.log("State:", empState);
