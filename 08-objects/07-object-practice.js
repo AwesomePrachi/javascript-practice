@@ -630,3 +630,131 @@ for (const student of studentsWithMarks) {
 
 console.log(highestScoringStudent);
 // { name: "Neha", marks: 92 }
+
+
+// Nested Objects
+
+
+// 43. Access Nested Properties
+
+const studentInfo = {
+    name: "Prachi",
+    address: {
+        city: "Bhiwandi",
+        state: "Maharashtra"
+    }
+};
+
+const { city, state } = studentInfo.address;
+
+console.log("Name:", studentInfo.name);
+console.log("City:", city);
+console.log("State:", state);
+
+
+// 44. Update and Add Nested Properties
+
+studentInfo.address.city = "Thane";
+studentInfo.address.pincode = 400001;
+
+console.log(studentInfo.address);
+
+
+// 45. Access a Three-Level Nested Object
+
+const company = {
+    name: "TechCorp",
+    employee: {
+        name: "Prachi",
+        address: {
+            city: "Bhiwandi",
+            state: "Maharashtra"
+        }
+    }
+};
+
+console.log("Employee:", company.employee.name);
+console.log("City:", company.employee.address.city);
+console.log("State:", company.employee.address.state);
+
+
+// 46. Nested Object Destructuring
+
+const companyData = {
+    name: "TechCorp",
+    employee: {
+        name: "Prachi",
+        details: {
+            age: 22,
+            role: "Node.js Developer",
+            salary: 25000
+        }
+    }
+};
+
+const { age, role, salary } = companyData.employee.details;
+
+console.log("Employee:", companyData.employee.name);
+console.log("Age:", age);
+console.log("Role:", role);
+console.log("Salary:", salary);
+
+
+// 47. Nested Object Analysis
+
+const studentData = {
+    name: "Prachi",
+    personal: {
+        age: 22,
+        city: "Bhiwandi"
+    },
+    marks: {
+        javascript: 85,
+        html: 78,
+        css: 82
+    }
+};
+
+// Student information
+
+console.log("Name:", studentData.name);
+console.log("City:", studentData.personal.city);
+
+// Total marks
+
+let total = 0;
+
+for (const subject in studentData.marks) {
+    totalMarks += studentData.marks[subject];
+}
+
+console.log("Total marks:", total);
+
+// Average marks
+
+let totalSubjectCount = 0;
+
+for (const subject in studentData.marks) {
+    totalSubjectCount++;
+}
+
+const average = total / totalSubjectCount;
+
+console.log("Average marks:", Math.round(average));
+
+// Check whether the student passed all subjects
+
+let passedAllSubjects = true;
+
+for (const subject in studentData.marks) {
+    if (studentData.marks[subject] < 50) {
+        passedAllSubjects = false;
+        break;
+    }
+}
+
+if (passedAllSubjects) {
+    console.log("Student passed all subjects.");
+} else {
+    console.log("Student failed.");
+}
