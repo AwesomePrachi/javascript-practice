@@ -1052,3 +1052,106 @@ console.log(inStockProducts);
 //     { name: "Shoes", price: 2000 },
 //     { name: "Watch", price: 5000 }
 // ]
+
+
+// Destructuring + Array/Object Combinations
+
+
+// 60. Object Destructuring
+
+const user = {
+    name: "Prachi",
+    age: 22,
+    city: "Bhiwandi"
+};
+
+const { name, age, city } = user;
+
+console.log(name);
+console.log(age);
+console.log(city);
+
+
+// 61. Skip an Array Element with Destructuring
+
+const numbersForDestructuring = [10, 20, 30, 40];
+
+const [firstNumber, , thirdNumber] = numbersForDestructuring;
+
+console.log(firstNumber);
+console.log(thirdNumber);
+
+
+// 62. Rename Destructured Properties
+
+const singleUser = {
+    name: "Prachi",
+    age: 22
+};
+
+const { name: userName, age: userAge } = singleUser;
+
+console.log(userName);
+console.log(userAge);
+
+
+// 63. Update Objects Inside an Array
+
+const studentMarksForUpdate = [
+    { name: "Rahul", marks: 75 },
+    { name: "Amit", marks: 62 },
+    { name: "Prachi", marks: 88 }
+];
+
+const studentsWithIncreasedMarks = studentMarksForUpdate.map(student => {
+    return {
+        ...student,
+        marks: student.marks + 5
+    };
+});
+
+console.log(studentsWithIncreasedMarks);
+
+
+// 64. Filter and Transform Nested Data
+
+const usersByLocation = [
+    {
+        id: 1,
+        name: "Rahul",
+        profile: {
+            city: "Mumbai",
+            age: 24
+        }
+    },
+    {
+        id: 2,
+        name: "Prachi",
+        profile: {
+            city: "Bhiwandi",
+            age: 22
+        }
+    },
+    {
+        id: 3,
+        name: "Amit",
+        profile: {
+            city: "Thane",
+            age: 26
+        }
+    }
+];
+
+const usersFromSelectedCities = usersByLocation
+    .filter(user => {
+        return user.profile.city === "Bhiwandi"
+            || user.profile.city === "Thane";
+    })
+    .map(user => {
+        return {
+            name: user.name,
+            city: user.profile.city
+        };
+    });
+
+console.log(usersFromSelectedCities);
