@@ -1307,3 +1307,106 @@ console.log("Phone:", accountPhone);
 
 console.log("City:", accountCity);
 // City not available
+
+
+// Arrays of Objects + Array Methods
+
+
+// 72. Get Student Names — map()
+
+const studentResults = [
+    { name: "Rahul", marks: 55 },
+    { name: "Amit", marks: 72 },
+    { name: "Prachi", marks: 88 },
+    { name: "Neha", marks: 45 }
+];
+
+const resultStudentNames = studentResults.map(student => student.name);
+
+console.log(resultStudentNames);
+// ["Rahul", "Amit", "Prachi", "Neha"]
+
+
+// 73. Add 5 Marks — map()
+
+const updatedStudents = studentResults.map(student => {
+    return {
+        ...student,
+        marks: student.marks + 5
+    };
+});
+
+console.log(updatedStudents);
+
+
+// 74. Get Students Who Passed — filter()
+
+const passedStudents = studentResults.filter(
+    student => student.marks >= 50
+);
+
+console.log(passedStudents);
+
+
+// 75. Get Names of Passed Students — filter() + map()
+
+const passedStudentNames = studentResults
+    .filter(student => student.marks >= 50)
+    .map(student => student.name);
+
+console.log(passedStudentNames);
+// ["Rahul", "Amit", "Prachi"]
+
+
+// 76. Find the First Student Who Scored 80+ — find()
+
+const firstHighScoringStudent = studentResults.find(
+    student => student.marks >= 80
+);
+
+console.log(firstHighScoringStudent);
+// { name: "Prachi", marks: 88 }
+
+
+// 77. Calculate Total Marks — reduce()
+
+const totalMarksFromResults = studentResults.reduce(
+    (total, student) => total + student.marks,
+    0
+);
+
+console.log(totalMarksFromResults);
+// 260
+
+
+// 78. Find the Student with Highest Marks — reduce()
+
+const highestStudentByReduce = studentResults.reduce(
+    (highest, student) => {
+        if (student.marks > highest.marks) {
+            return student;
+        }
+
+        return highest;
+    },
+    studentResults[0]
+);
+
+console.log(highestStudentByReduce);
+// { name: "Prachi", marks: 88 }
+
+
+// 79. Create a New Display Format — map() + destructuring
+
+const studentDisplayData = studentResults.map(({ name, marks }) => {
+    return `${name} scored ${marks}`;
+});
+
+console.log(studentDisplayData);
+
+// [
+//     "Rahul scored 55",
+//     "Amit scored 72",
+//     "Prachi scored 88",
+//     "Neha scored 45"
+// ]
