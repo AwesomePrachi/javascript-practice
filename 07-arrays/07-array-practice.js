@@ -867,3 +867,188 @@ const mostExpensiveProduct = productsForPriceComparison.reduce(
 
 console.log(mostExpensiveProduct);
 // { name: "Laptop", price: 50000 }
+
+
+// Advanced Arrays + Objects
+
+
+// 60. Get Student Names with Destructuring
+
+const studentMarksData = [
+    { name: "Rahul", marks: 75 },
+    { name: "Amit", marks: 62 },
+    { name: "Prachi", marks: 88 }
+];
+
+const studentNamesFromMarks = studentMarksData.map(
+    ({ name }) => name
+);
+
+console.log(studentNamesFromMarks);
+// ["Rahul", "Amit", "Prachi"]
+
+
+// 61. Add a Property to Every Object
+
+const studentsWithStatus = studentMarksData.map(student => {
+    return {
+        ...student,
+        passed: true
+    };
+});
+
+console.log(studentsWithStatus);
+
+
+// 62. Add a Calculated Property Based on Marks
+
+const studentResultsForStatus = [
+    { name: "Rahul", marks: 75 },
+    { name: "Amit", marks: 32 },
+    { name: "Prachi", marks: 88 },
+    { name: "Neha", marks: 25 }
+];
+
+const studentsWithPassStatus = studentResultsForStatus.map(
+    student => {
+        return {
+            ...student,
+            passed: student.marks >= 40
+        };
+    }
+);
+
+console.log(studentsWithPassStatus);
+
+
+// 63. Find the Highest-Scoring Student
+
+const highestScoringStudent = studentResultsForStatus.reduce(
+    (highest, student) => {
+        if (student.marks > highest.marks) {
+            return student;
+        }
+
+        return highest;
+    },
+    studentResultsForStatus[0]
+);
+
+console.log(highestScoringStudent);
+// { name: "Prachi", marks: 88 }
+
+
+// 64. Sort Numbers in Ascending Order
+
+const numbersToSort = [50, 10, 40, 20, 30];
+
+numbersToSort.sort((a, b) => a - b);
+
+console.log(numbersToSort);
+// [10, 20, 30, 40, 50]
+
+
+// 65. Sort Numbers in Descending Order
+
+numbersToSort.sort((a, b) => b - a);
+
+console.log(numbersToSort);
+// [50, 40, 30, 20, 10]
+
+
+// 66. Sort Products by Price
+
+const productsForSorting = [
+    { name: "Laptop", price: 50000 },
+    { name: "Mouse", price: 1000 },
+    { name: "Monitor", price: 15000 },
+    { name: "Keyboard", price: 2000 }
+];
+
+productsForSorting.sort((a, b) => a.price - b.price);
+
+console.log(productsForSorting);
+
+
+// 67. Find a Student and Access a Nested Array
+
+const studentSubjectData = [
+    {
+        name: "Rahul",
+        subjects: ["Math", "English", "Science"]
+    },
+    {
+        name: "Prachi",
+        subjects: ["Math", "Physics", "Chemistry"]
+    },
+    {
+        name: "Amit",
+        subjects: ["English", "History"]
+    }
+];
+
+const prachiStudent = studentSubjectData.find(
+    student => student.name === "Prachi"
+);
+
+console.log(prachiStudent.subjects);
+// ["Math", "Physics", "Chemistry"]
+
+
+// 68. Real-World API-Style Product Transformation
+
+const productDetails = [
+    {
+        id: 1,
+        name: "Laptop",
+        price: 50000,
+        category: "electronics",
+        inStock: true
+    },
+    {
+        id: 2,
+        name: "Phone",
+        price: 30000,
+        category: "electronics",
+        inStock: false
+    },
+    {
+        id: 3,
+        name: "Shirt",
+        price: 800,
+        category: "clothing",
+        inStock: true
+    },
+    {
+        id: 4,
+        name: "Shoes",
+        price: 2000,
+        category: "clothing",
+        inStock: true
+    },
+    {
+        id: 5,
+        name: "Watch",
+        price: 5000,
+        category: "accessories",
+        inStock: true
+    }
+];
+
+const inStockProducts = productDetails
+    .filter(product => product.inStock)
+    .map(product => {
+        return {
+            name: product.name,
+            price: product.price
+        };
+    });
+
+console.log(inStockProducts);
+
+// [
+//     { name: "Laptop", price: 50000 },
+//     { name: "Shirt", price: 800 },
+//     { name: "Shoes", price: 2000 },
+//     { name: "Watch", price: 5000 }
+// ]
