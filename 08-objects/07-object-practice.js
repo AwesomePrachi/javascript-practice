@@ -1410,3 +1410,197 @@ console.log(studentDisplayData);
 //     "Prachi scored 88",
 //     "Neha scored 45"
 // ]
+
+
+ // Real-World Array + Object Problems
+
+
+// 72. Product Inventory Dataset
+
+const inventoryProducts = [
+    { name: "Laptop", price: 50000, category: "Electronics", stock: 5 },
+    { name: "Phone", price: 30000, category: "Electronics", stock: 0 },
+    { name: "Shirt", price: 1500, category: "Clothing", stock: 10 },
+    { name: "Shoes", price: 2500, category: "Clothing", stock: 3 },
+    { name: "Watch", price: 5000, category: "Accessories", stock: 0 },
+    { name: "Headphones", price: 3000, category: "Electronics", stock: 8 }
+];
+
+
+// 73. Get Names of Available Products
+
+const availableProductNames = inventoryProducts
+    .filter(product => product.stock > 0)
+    .map(product => product.name);
+
+console.log(availableProductNames);
+// ["Laptop", "Shirt", "Shoes", "Headphones"]
+
+
+// 74. Find Out-of-Stock Products
+
+const outOfStockProducts = inventoryProducts.filter(
+    product => product.stock === 0
+);
+
+console.log(outOfStockProducts);
+// Phone and Watch are out of stock.
+
+
+// 75. Filter Products by Category
+
+const electronicsProducts = inventoryProducts.filter(
+    product => product.category === "Electronics"
+);
+
+console.log(electronicsProducts);
+// Laptop, Phone, and Headphones.
+
+
+// 76. Get Names of Available Electronics
+
+const availableElectronicsNames = inventoryProducts
+    .filter(product => {
+        return product.category === "Electronics"
+            && product.stock > 0;
+    })
+    .map(product => product.name);
+
+console.log(availableElectronicsNames);
+// ["Laptop", "Headphones"]
+
+
+// 77. Calculate Total Inventory Value
+
+const totalInventoryValue = inventoryProducts.reduce(
+    (total, product) => {
+        return total + product.price * product.stock;
+    },
+    0
+);
+
+console.log(totalInventoryValue);
+// 296500
+
+
+// 78. Find the Cheapest Product
+
+const cheapestInventoryProduct = inventoryProducts.reduce(
+    (cheapest, product) => {
+        if (product.price < cheapest.price) {
+            return product;
+        }
+
+        return cheapest;
+    },
+    inventoryProducts[0]
+);
+
+console.log(cheapestInventoryProduct);
+// { name: "Shirt", price: 1500, category: "Clothing", stock: 10 }
+
+
+// 79. Find the Product with the Highest Inventory Value
+
+const highestInventoryValueProduct = inventoryProducts.reduce(
+    (highest, product) => {
+        const currentInventoryValue = product.price * product.stock;
+        const highestInventoryValue = highest.price * highest.stock;
+
+        if (currentInventoryValue > highestInventoryValue) {
+            return product;
+        }
+
+        return highest;
+    },
+    inventoryProducts[0]
+);
+
+console.log(highestInventoryValueProduct.name);
+// Laptop
+
+
+// 80. Format Product Information
+
+const formattedProducts = inventoryProducts.map(
+    ({ name, price, stock }) => {
+        const availability = stock === 0
+            ? "Out of stock"
+            : `${stock} available`;
+
+        return `${name} - ₹${price} - ${availability}`;
+    }
+);
+
+console.log(formattedProducts);
+
+
+// 81. Create a Category Summary
+
+const categorySummary = inventoryProducts.reduce(
+    (summary, product) => {
+        if (summary[product.category] !== undefined) {
+            summary[product.category]++;
+        } else {
+            summary[product.category] = 1;
+        }
+
+        return summary;
+    },
+    {}
+);
+
+console.log(categorySummary);
+
+// {
+//     Electronics: 3,
+//     Clothing: 2,
+//     Accessories: 1
+// }
+
+
+// 82. Mini E-Commerce Analysis
+
+const highestPricedProduct = inventoryProducts.reduce(
+    (highest, product) => {
+        return product.price > highest.price ? product : highest;
+    },
+    inventoryProducts[0]
+);
+
+const clothingProductCount = inventoryProducts.filter(
+    product => product.category === "Clothing"
+).length;
+
+const ecommerceSummary = {
+    totalProducts: inventoryProducts.length,
+
+    inStock: inventoryProducts.filter(
+        product => product.stock > 0
+    ).length,
+
+    outOfStock: outOfStockProducts.length,
+
+    mostExpensive: highestPricedProduct.name,
+
+    cheapest: cheapestInventoryProduct.name,
+
+    availableElectronics: availableElectronicsNames,
+
+    clothingCount: clothingProductCount,
+
+    highestInventoryValueProduct: highestInventoryValueProduct.name
+};
+
+console.log(ecommerceSummary);
+
+// {
+//     totalProducts: 6,
+//     inStock: 4,
+//     outOfStock: 2,
+//     mostExpensive: "Laptop",
+//     cheapest: "Shirt",
+//     availableElectronics: ["Laptop", "Headphones"],
+//     clothingCount: 2,
+//     highestInventoryValueProduct: "Laptop"
+// }
