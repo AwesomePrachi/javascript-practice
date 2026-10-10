@@ -548,3 +548,209 @@ const findDuplicates = (arr) => {
 
 console.log(findDuplicates([1, 2, 3, 2, 4, 1, 5]));
 // [1, 2]
+
+
+
+// Real-World JavaScript Function Problems
+
+
+// 33. Calculate Discounted Price
+
+const calculateDiscountedPrice = (price, discountPercentage) => {
+    return price * (1 - discountPercentage / 100);
+};
+
+console.log(calculateDiscountedPrice(1000, 20)); // 800
+
+
+// 34. Validate User Age
+
+const isEligibleForRegistration = age => {
+    return age >= 18;
+};
+
+console.log(isEligibleForRegistration(22)); // true
+
+
+// 35. Calculate Shopping Cart Total
+
+const cartItems = [
+    { name: "Shirt", price: 500, quantity: 2 },
+    { name: "Shoes", price: 1500, quantity: 1 },
+    { name: "Watch", price: 1000, quantity: 1 }
+];
+
+const calculateCartTotal = items => {
+    return items.reduce((total, item) => {
+        return total + item.price * item.quantity;
+    }, 0);
+};
+
+console.log(calculateCartTotal(cartItems)); // 3500
+
+
+// 36. Find Out-of-Stock Product Names
+
+const stockProducts = [
+    { name: "Laptop", stock: 5 },
+    { name: "Phone", stock: 0 },
+    { name: "Headphones", stock: 0 },
+    { name: "Keyboard", stock: 3 }
+];
+
+const getOutOfStockProducts = products => {
+    return products
+        .filter(product => product.stock === 0)
+        .map(product => product.name);
+};
+
+console.log(getOutOfStockProducts(stockProducts));
+// ["Phone", "Headphones"]
+
+
+// 37. Generate a Username
+
+const generateUsername = (firstName, lastName) => {
+    return `${firstName.trim().toLowerCase()}.${lastName.trim().toLowerCase()}`;
+};
+
+console.log(generateUsername("Prachi", "Patel")); // "prachi.patel"
+
+
+// 38. Calculate Student Grade
+
+function calculateGrade(marks) {
+    if (marks < 0 || marks > 100) {
+        return "Invalid marks";
+    }
+
+    if (marks >= 90) {
+        return "A";
+    }
+
+    if (marks >= 75) {
+        return "B";
+    }
+
+    if (marks >= 60) {
+        return "C";
+    }
+
+    if (marks >= 40) {
+        return "D";
+    }
+
+    return "F";
+}
+
+console.log(calculateGrade(95)); // "A"
+console.log(calculateGrade(82)); // "B"
+console.log(calculateGrade(35)); // "F"
+console.log(calculateGrade(110)); // "Invalid marks"
+
+
+// 39. Find a User by ID
+
+const usersForSearch = [
+    { id: 101, name: "Rahul" },
+    { id: 102, name: "Prachi" },
+    { id: 103, name: "Neha" }
+];
+
+const findUserById = (users, id) => {
+    return users.find(user => user.id === id);
+};
+
+console.log(findUserById(usersForSearch, 102));
+// { id: 102, name: "Prachi" }
+
+
+// 40. Update a Product Price
+
+const productsForPriceUpdate = [
+    { name: "Laptop", price: 50000 },
+    { name: "Mouse", price: 500 },
+    { name: "Keyboard", price: 1500 }
+];
+
+const updateProductPrice = (products, productName, newPrice) => {
+    return products.map(product => {
+        if (product.name === productName) {
+            return {
+                ...product,
+                price: newPrice
+            };
+        }
+
+        return product;
+    });
+};
+
+const updatedProducts = updateProductPrice(
+    productsForPriceUpdate,
+    "Mouse",
+    700
+);
+
+console.log(updatedProducts);
+
+// The Mouse price is 700.
+// The original products remain unchanged.
+
+
+// 41. Summarize Order Status
+
+const orders = [
+    { id: 1, status: "completed" },
+    { id: 2, status: "pending" },
+    { id: 3, status: "completed" },
+    { id: 4, status: "pending" },
+    { id: 5, status: "completed" }
+];
+
+const getOrderSummary = orders => {
+    return {
+        totalOrders: orders.length,
+
+        completedOrders: orders.filter(
+            order => order.status === "completed"
+        ).length,
+
+        pendingOrders: orders.filter(
+            order => order.status === "pending"
+        ).length
+    };
+};
+
+console.log(getOrderSummary(orders));
+
+// {
+//     totalOrders: 5,
+//     completedOrders: 3,
+//     pendingOrders: 2
+// }
+
+
+// 42. Search Products by Name
+
+const productsForSearch = [
+    { name: "Laptop", price: 50000 },
+    { name: "Gaming Mouse", price: 1500 },
+    { name: "Keyboard", price: 2000 },
+    { name: "Laptop Stand", price: 800 }
+];
+
+function searchProducts(products, searchTerm) {
+    const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+
+    return products.filter(product => {
+        return product.name.toLowerCase().includes(normalizedSearchTerm);
+    });
+}
+
+console.log(searchProducts(productsForSearch, "laptop"));
+
+// [
+//     { name: "Laptop", price: 50000 },
+//     { name: "Laptop Stand", price: 800 }
+// ]
