@@ -754,3 +754,182 @@ console.log(searchProducts(productsForSearch, "laptop"));
 //     { name: "Laptop", price: 50000 },
 //     { name: "Laptop Stand", price: 800 }
 // ]
+
+
+// Arrays + Objects + Real-World Logic
+
+
+// 43. Filter Active Users
+
+const activeUserRecords = [
+    { id: 1, name: "Rahul", isActive: true },
+    { id: 2, name: "Priya", isActive: false },
+    { id: 3, name: "Amit", isActive: true },
+    { id: 4, name: "Neha", isActive: false }
+];
+
+const getActiveUsers = users => {
+    return users.filter(user => user.isActive);
+};
+
+console.log(getActiveUsers(activeUserRecords));
+// Rahul and Amit
+
+
+// 44. Extract Product Names
+
+const productsForExtraction = [
+    { id: 1, name: "Laptop", price: 50000, stock: 2 },
+    { id: 2, name: "Mouse", price: 800, stock: 10 },
+    { id: 3, name: "Keyboard", price: 1500, stock: 4 }
+];
+
+const getProductNames = products => {
+    return products.map(product => product.name);
+};
+
+console.log(getProductNames(productsForExtraction));
+// ["Laptop", "Mouse", "Keyboard"]
+
+
+// 45. Calculate Total Inventory Value
+
+const calculateInventoryValue = products => {
+    return products.reduce((total, product) => {
+        return total + product.price * product.stock;
+    }, 0);
+};
+
+console.log(calculateInventoryValue(productsForExtraction));
+// 114000
+
+
+// 46. Find the Highest-Paid Employee
+
+const employees = [
+    { name: "Rahul", salary: 25000 },
+    { name: "Priya", salary: 40000 },
+    { name: "Amit", salary: 32000 },
+    { name: "Neha", salary: 50000 }
+];
+
+const findHighestPaidEmployee = employees => {
+    if (employees.length === 0) {
+        return undefined;
+    }
+
+    return employees.reduce((highestPaid, employee) => {
+        if (employee.salary > highestPaid.salary) {
+            return employee;
+        }
+
+        return highestPaid;
+    }, employees[0]);
+};
+
+console.log(findHighestPaidEmployee(employees));
+// { name: "Neha", salary: 50000 }
+
+
+// 47. Calculate Average Student Marks
+
+const studentsForMarks = [
+    { name: "Rahul", marks: 70 },
+    { name: "Priya", marks: 85 },
+    { name: "Amit", marks: 90 },
+    { name: "Neha", marks: 75 }
+];
+
+const calculateAverageMarks = students => {
+    if (students.length === 0) {
+        return 0;
+    }
+
+    const totalMarks = students.reduce((total, student) => {
+        return total + student.marks;
+    }, 0);
+
+    return totalMarks / students.length;
+};
+
+console.log(calculateAverageMarks(studentsForMarks));
+// 80
+
+
+// 48. Get Names of Students Who Passed
+
+const getPassedStudents = students => {
+    return students
+        .filter(student => student.marks >= 40)
+        .map(student => student.name);
+};
+
+console.log(getPassedStudents(studentsForMarks));
+// ["Rahul", "Priya", "Amit", "Neha"]
+
+
+// 49. Group Products by Category
+
+const productsForGrouping = [
+    { name: "Laptop", category: "Electronics" },
+    { name: "Shirt", category: "Clothing" },
+    { name: "Mouse", category: "Electronics" },
+    { name: "Jeans", category: "Clothing" },
+    { name: "Apple", category: "Food" }
+];
+
+const groupProductsByCategory = products => {
+    return products.reduce((groups, product) => {
+        if (!groups[product.category]) {
+            groups[product.category] = [];
+        }
+
+        groups[product.category].push(product.name);
+
+        return groups;
+    }, {});
+};
+
+console.log(groupProductsByCategory(productsForGrouping));
+
+// {
+//     Electronics: ["Laptop", "Mouse"],
+//     Clothing: ["Shirt", "Jeans"],
+//     Food: ["Apple"]
+// }
+
+
+// 50. Create a Sales Summary
+
+const salesRecords = [
+    { orderId: 101, amount: 1000 },
+    { orderId: 102, amount: 2500 },
+    { orderId: 103, amount: 1500 },
+    { orderId: 104, amount: 3000 }
+];
+
+const getSalesSummary = sales => {
+    const totalSales = sales.reduce((total, sale) => {
+        return total + sale.amount;
+    }, 0);
+
+    const totalOrders = sales.length;
+
+    const averageOrderValue = totalOrders === 0
+        ? 0
+        : totalSales / totalOrders;
+
+    return {
+        totalSales,
+        totalOrders,
+        averageOrderValue
+    };
+};
+
+console.log(getSalesSummary(salesRecords));
+
+// {
+//     totalSales: 8000,
+//     totalOrders: 4,
+//     averageOrderValue: 2000
+// }
