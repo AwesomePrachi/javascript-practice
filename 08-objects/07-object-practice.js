@@ -1604,3 +1604,294 @@ console.log(ecommerceSummary);
 //     clothingCount: 2,
 //     highestInventoryValueProduct: "Laptop"
 // }
+
+
+// JSON + Real-World Data Practice
+
+
+// 83. Convert JSON to an Object
+
+const jsonUserText = `{
+    "name": "Prachi",
+    "age": 22,
+    "city": "Bhiwandi"
+}`;
+
+const parsedJsonUser = JSON.parse(jsonUserText);
+
+console.log(parsedJsonUser.name); // Prachi
+console.log(parsedJsonUser.age); // 22
+console.log(parsedJsonUser.city); // Bhiwandi
+
+
+// 84. Convert an Object to JSON
+
+const jsonProductRecord = {
+    name: "Laptop",
+    price: 50000,
+    inStock: true
+};
+
+const serializedJsonProduct = JSON.stringify(jsonProductRecord);
+
+console.log(serializedJsonProduct);
+// {"name":"Laptop","price":50000,"inStock":true}
+
+
+// 85. Filter a JSON Array of Objects
+
+const jsonStudentRecordsText = `[
+    { "name": "Rahul", "marks": 75 },
+    { "name": "Amit", "marks": 92 },
+    { "name": "Neha", "marks": 68 }
+]`;
+
+const parsedJsonStudentRecords = JSON.parse(jsonStudentRecordsText);
+
+const jsonStudentNamesWith70Plus = parsedJsonStudentRecords
+    .filter(studentRecord => studentRecord.marks >= 70)
+    .map(studentRecord => studentRecord.name);
+
+console.log(jsonStudentNamesWith70Plus);
+// ["Rahul", "Amit"]
+
+
+// 86. Calculate a Total from JSON Data
+
+const jsonOrderRecordsText = `[
+    { "orderId": 101, "amount": 1200 },
+    { "orderId": 102, "amount": 2500 },
+    { "orderId": 103, "amount": 1800 }
+]`;
+
+const parsedJsonOrderRecords = JSON.parse(jsonOrderRecordsText);
+
+const jsonOrdersTotalAmount = parsedJsonOrderRecords.reduce(
+    (total, orderRecord) => total + orderRecord.amount,
+    0
+);
+
+console.log(jsonOrdersTotalAmount); // 5500
+
+
+// 87. Safely Access Nested API Data
+
+const profileApiResponseData = {
+    data: {
+        user: {
+            profile: {
+                name: "Prachi",
+                city: "Bhiwandi"
+            }
+        }
+    }
+};
+
+const profileApiUserData =
+    profileApiResponseData?.data?.user?.profile ?? {};
+
+const {
+    name: profileApiName,
+    city: profileApiCity,
+    phone: profileApiPhone
+} = profileApiUserData;
+
+console.log(profileApiName ?? "Not available"); // Prachi
+console.log(profileApiCity ?? "Not available"); // Bhiwandi
+console.log(profileApiPhone ?? "Not available"); // Not available
+
+
+// 88. Filter Products from an API Response
+
+const productListApiResponse = {
+    status: "success",
+    data: {
+        products: [
+            { id: 1, name: "Laptop", price: 50000 },
+            { id: 2, name: "Phone", price: 30000 },
+            { id: 3, name: "Shirt", price: 1500 },
+            { id: 4, name: "Watch", price: 5000 }
+        ]
+    }
+};
+
+const apiProductRecords = productListApiResponse?.data?.products ?? [];
+
+const apiExpensiveProductNames = apiProductRecords
+    .filter(productRecord => productRecord.price > 5000)
+    .map(productRecord => productRecord.name);
+
+console.log(apiExpensiveProductNames);
+// ["Laptop", "Phone"]
+
+
+// 89. Transform an API Response
+
+const apiProductsWithTax = apiProductRecords.map(productRecord => {
+    return {
+        id: productRecord.id,
+        name: productRecord.name,
+        priceWithTax: Number((productRecord.price * 1.18).toFixed(2))
+    };
+});
+
+console.log(apiProductsWithTax);
+
+// The original apiProductRecords array remains unchanged.
+
+
+// 90. Handle Missing API Data
+
+const incompleteUserApiResponse = {
+    status: "success",
+    data: {
+        user: {
+            name: "Prachi"
+        }
+    }
+};
+
+const incompleteApiUser =
+    incompleteUserApiResponse?.data?.user ?? {};
+
+const incompleteApiUserSummary = {
+    name: incompleteApiUser.name ?? "Not available",
+    email: incompleteApiUser.email ?? "Not available",
+    city: incompleteApiUser.city ?? "Not available",
+    phone: incompleteApiUser.phone ?? "Not available"
+};
+
+console.log(incompleteApiUserSummary);
+
+// {
+//     name: "Prachi",
+//     email: "Not available",
+//     city: "Not available",
+//     phone: "Not available"
+// }
+
+
+// 91. Group Orders by Status
+
+const ordersForStatusGrouping = [
+    { id: 101, amount: 1000, status: "delivered" },
+    { id: 102, amount: 2000, status: "pending" },
+    { id: 103, amount: 1500, status: "delivered" },
+    { id: 104, amount: 3000, status: "cancelled" },
+    { id: 105, amount: 2500, status: "pending" }
+];
+
+const orderCountsByStatus = ordersForStatusGrouping.reduce(
+    (statusCounts, orderRecord) => {
+        statusCounts[orderRecord.status] =
+            (statusCounts[orderRecord.status] ?? 0) + 1;
+
+        return statusCounts;
+    },
+    {}
+);
+
+console.log(orderCountsByStatus);
+
+// {
+//     delivered: 2,
+//     pending: 2,
+//     cancelled: 1
+// }
+
+
+// 92. Mini E-Commerce API Analysis
+
+const finalEcommerceApiResponse = {
+    status: "success",
+    data: {
+        products: [
+            { id: 1, name: "Laptop", price: 50000, stock: 5, category: "Electronics" },
+            { id: 2, name: "Phone", price: 30000, stock: 0, category: "Electronics" },
+            { id: 3, name: "Shirt", price: 1500, stock: 10, category: "Clothing" },
+            { id: 4, name: "Shoes", price: 2500, stock: 3, category: "Clothing" },
+            { id: 5, name: "Headphones", price: 3000, stock: 8, category: "Electronics" }
+        ]
+    }
+};
+
+const finalEcommerceProducts =
+    finalEcommerceApiResponse?.data?.products ?? [];
+
+const apiTotalProducts = finalEcommerceProducts.length;
+
+const apiInStockCount = finalEcommerceProducts.filter(
+    productRecord => productRecord.stock > 0
+).length;
+
+const apiOutOfStockCount = finalEcommerceProducts.filter(
+    productRecord => productRecord.stock === 0
+).length;
+
+const apiTotalInventoryValue = finalEcommerceProducts.reduce(
+    (total, productRecord) => {
+        return total + productRecord.price * productRecord.stock;
+    },
+    0
+);
+
+const apiMostExpensiveProduct = finalEcommerceProducts.length > 0
+    ? finalEcommerceProducts.reduce(
+        (highest, productRecord) =>
+            productRecord.price > highest.price ? productRecord : highest,
+        finalEcommerceProducts[0]
+    )
+    : null;
+
+const apiCheapestProduct = finalEcommerceProducts.length > 0
+    ? finalEcommerceProducts.reduce(
+        (lowest, productRecord) =>
+            productRecord.price < lowest.price ? productRecord : lowest,
+        finalEcommerceProducts[0]
+    )
+    : null;
+
+const apiAvailableElectronicsNames = finalEcommerceProducts
+    .filter(productRecord => {
+        return productRecord.category === "Electronics"
+            && productRecord.stock > 0;
+    })
+    .map(productRecord => productRecord.name);
+
+const apiClothingProductCount = finalEcommerceProducts.filter(
+    productRecord => productRecord.category === "Clothing"
+).length;
+
+const apiHighestInventoryValueProduct = finalEcommerceProducts.length > 0
+    ? finalEcommerceProducts.reduce(
+        (highest, productRecord) => {
+            const currentValue = productRecord.price * productRecord.stock;
+            const highestValue = highest.price * highest.stock;
+
+            return currentValue > highestValue ? productRecord : highest;
+        },
+        finalEcommerceProducts[0]
+    )
+    : null;
+
+const apiFormattedProductPrices = finalEcommerceProducts.map(
+    productRecord => {
+        return `${productRecord.name}: ₹${productRecord.price.toLocaleString("en-IN")}`;
+    }
+);
+
+const finalEcommerceApiSummary = {
+    totalProducts: apiTotalProducts,
+    inStock: apiInStockCount,
+    outOfStock: apiOutOfStockCount,
+    totalInventoryValue: apiTotalInventoryValue,
+    mostExpensive: apiMostExpensiveProduct?.name ?? null,
+    cheapest: apiCheapestProduct?.name ?? null,
+    availableElectronics: apiAvailableElectronicsNames,
+    clothingCount: apiClothingProductCount,
+    highestInventoryValueProduct:
+        apiHighestInventoryValueProduct?.name ?? null,
+    formattedPrices: apiFormattedProductPrices
+};
+
+console.log(finalEcommerceApiSummary);
