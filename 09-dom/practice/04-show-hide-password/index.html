@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show or Hide Password</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <div class="background-glow" aria-hidden="true"></div>
+
+    <main class="password-card">
+        <div class="icon-box" aria-hidden="true">♙</div>
+
+        <p class="eyebrow">JAVASCRIPT MINI PROJECT</p>
+        <h1>Show or Hide<br>Password</h1>
+
+        <p class="description">
+            Your password, your control. Use the button to reveal your password
+            or keep it hidden.
+        </p>
+
+        <label class="field-label" for="passwordInput">
+            Enter your password
+        </label>
+
+        <div class="password-wrapper">
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Enter password"
+                autocomplete="off"
+                spellcheck="false"
+            >
+
+            <button
+                type="button"
+                id="toggleBtn"
+                aria-controls="passwordInput"
+            >Show password</button>
+        </div>
+
+        <p class="hint">
+            This demo only toggles visibility. It does not save or verify your password.
+        </p>
+
+        <div class="footer">
+            BUILT WITH <span>HTML</span> · <span>CSS</span> · <span>JAVASCRIPT</span>
+            <br>
+            A small step towards mastering the DOM.
+        </div>
+    </main>
+</body>
+</html>
