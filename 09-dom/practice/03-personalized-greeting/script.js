@@ -1,4 +1,3 @@
-
 const greetingForm = document.querySelector("#greetingForm");
 const nameInput = document.querySelector("#nameInput");
 const message = document.querySelector("#message");
