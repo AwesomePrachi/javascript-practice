@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Character Counter</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <div class="background-glow" aria-hidden="true"></div>
+
+    <main class="counter-card" id="counterCard">
+        <div class="icon-box" aria-hidden="true">Aa</div>
+
+        <p class="eyebrow">JAVASCRIPT MINI PROJECT</p>
+
+        <h1>Live Character<br>Counter</h1>
+
+        <p class="description">
+            Every character counts. Start typing and watch your
+            character count update instantly.
+        </p>
+
+        <label class="field-label" for="textInput">Your message</label>
+
+        <textarea
+            id="textInput"
+            placeholder="Start typing something..."
+            maxlength="50"
+            aria-describedby="characterCount limitText"
+        ></textarea>
+
+        <div class="counter-info">
+            <p id="characterCount">
+                Characters: <span class="number" id="count">0</span>
+            </p>
+            <p id="limitText">50 characters max</p>
+        </div>
+
+        <div
+            class="progress-track"
+            role="progressbar"
+            aria-label="Character limit used"
+            aria-valuemin="0"
+            aria-valuemax="50"
+            aria-valuenow="0"
+            id="progressTrack"
+        >
+            <div id="progressBar" aria-hidden="true"></div>
+        </div>
+
+        <p class="hint">
+            You can enter up to 50 characters.
+        </p>
+
+        <div class="footer">
+            BUILT WITH <span>HTML</span> · <span>CSS</span> ·
+            <span>JAVASCRIPT</span>
+            <br>
+            Small projects. Consistent progress.
+        </div>
+    </main>
+</body>
+</html>
