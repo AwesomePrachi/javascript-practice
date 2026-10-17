@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Items to a List | JavaScript Practice</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <p class="eyebrow">JAVASCRIPT MINI PROJECT</p>
+        <h1>My <span>List</span></h1>
+        <p class="description">
+            A little space to collect your thoughts.
+            Add anything you want to remember.
+        </p>
+
+        <form id="itemForm">
+            <label class="field-label" for="itemInput">New item</label>
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="itemInput"
+                    name="item"
+                    placeholder="Enter an item..."
+                    autocomplete="off"
+                    maxlength="200"
+                >
+                <button type="submit" id="addBtn">+ Add</button>
+            </div>
+        </form>
+
+        <div class="list-header">
+            <h2>YOUR ITEMS</h2>
+            <span id="itemCount" aria-live="polite">0 items</span>
+        </div>
+
+        <p id="emptyMessage">Your list is empty. Add your first item.</p>
+        <ul id="itemList" aria-label="Your items"></ul>
+
+        <div class="footer">
+            BUILT WITH <span>HTML</span> · <span>CSS</span> ·
+            <span>JAVASCRIPT</span>
+            <br>
+            One small step at a time.
+        </div>
+    </main>
+</body>
+</html>
