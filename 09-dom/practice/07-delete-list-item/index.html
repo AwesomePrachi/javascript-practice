@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete List Item | JavaScript Practice</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <p class="eyebrow">JAVASCRIPT MINI PROJECT</p>
+        <h1>Manage <span>Tasks</span></h1>
+        <p class="description">
+            Keep your list clean and focused.
+            Remove a task whenever you're ready.
+        </p>
+
+        <div class="list-header">
+            <h2>YOUR TASKS</h2>
+            <span id="itemCount" aria-live="polite">3 items</span>
+        </div>
+
+        <ul id="taskList" aria-label="Your tasks">
+            <li>
+                <span class="task-name">
+                    <span class="task-dot" aria-hidden="true"></span>
+                    Learn HTML
+                </span>
+                <button type="button" class="delete-btn" aria-label="Delete Learn HTML">Delete</button>
+            </li>
+            <li>
+                <span class="task-name">
+                    <span class="task-dot" aria-hidden="true"></span>
+                    Learn CSS
+                </span>
+                <button type="button" class="delete-btn" aria-label="Delete Learn CSS">Delete</button>
+            </li>
+            <li>
+                <span class="task-name">
+                    <span class="task-dot" aria-hidden="true"></span>
+                    Learn JavaScript
+                </span>
+                <button type="button" class="delete-btn" aria-label="Delete Learn JavaScript">Delete</button>
+            </li>
+        </ul>
+
+        <p id="emptyMessage" hidden>
+            All tasks cleared. Your list is empty.
+        </p>
+
+        <div class="footer">
+            BUILT WITH <span>HTML</span> · <span>CSS</span> ·
+            <span>JAVASCRIPT</span>
+            <br>
+            Small steps. Consistent progress.
+        </div>
+    </main>
+</body>
+</html>
