@@ -1,0 +1,233 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background: #080b12;
+    color: #f8fafc;
+    font-family: Arial, sans-serif;
+}
+
+.form-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 36px;
+    background: #111827;
+    border: 1px solid #252d3d;
+    border-radius: 24px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+    animation: cardAppear 0.5s ease-out;
+}
+
+.icon-box {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 28px;
+    background: rgba(99, 102, 241, 0.13);
+    border: 1px solid rgba(129, 140, 248, 0.25);
+    border-radius: 16px;
+    color: #a5b4fc;
+}
+
+.eyebrow {
+    margin-bottom: 12px;
+    color: #818cf8;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+h1 {
+    margin-bottom: 12px;
+    font-size: clamp(27px, 6vw, 32px);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+h1 span {
+    color: #818cf8;
+}
+
+.description {
+    margin-bottom: 30px;
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #e2e8f0;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: 15px 16px;
+    margin-bottom: 18px;
+    border: 1px solid #30394b;
+    border-radius: 12px;
+    outline: none;
+    background: #0b101a;
+    color: #f8fafc;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder {
+    color: #64748b;
+}
+
+input:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+input.invalid {
+    border-color: #fb7185;
+}
+
+input.valid {
+    border-color: #34d399;
+}
+
+#submitBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(100deg, #6366f1, #818cf8);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#submitBtn span {
+    font-size: 18px;
+    transition: transform 0.2s;
+}
+
+#submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
+}
+
+#submitBtn:hover span {
+    transform: translateX(3px);
+}
+
+#submitBtn:active {
+    transform: translateY(0);
+}
+
+#submitBtn:focus-visible {
+    outline: 2px solid #a5b4fc;
+    outline-offset: 4px;
+}
+
+#message {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+#message[hidden] {
+    display: none;
+}
+
+#message.success {
+    border-color: rgba(52, 211, 153, 0.2);
+    background: rgba(16, 185, 129, 0.09);
+    color: #6ee7b7;
+}
+
+#message.error {
+    border-color: rgba(251, 113, 133, 0.2);
+    background: rgba(244, 63, 94, 0.08);
+    color: #fda4af;
+}
+
+#message.show {
+    animation: messageAppear 0.3s ease-out;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #252d3d;
+    color: #64748b;
+    font-size: 11px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.footer span {
+    color: #a5b4fc;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+
+    .form-card {
+        padding: 26px 22px;
+        border-radius: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

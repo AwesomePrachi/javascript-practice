@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A beginner-friendly JavaScript DOM project demonstrating basic form validation.">
+    <title>Basic Form Validation | JavaScript Practice</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <main class="form-card">
+        <div class="icon-box" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </div>
+
+        <p class="eyebrow">JAVASCRIPT MINI PROJECT</p>
+        <h1>Let's get started<span>.</span></h1>
+        <p class="description">
+            Enter your name below to complete the form.
+            A little practice goes a long way.
+        </p>
+
+        <form id="nameForm" novalidate>
+            <label for="nameInput">Your name</label>
+            <input
+                type="text"
+                id="nameInput"
+                name="name"
+                placeholder="e.g. Prachi Patel"
+                autocomplete="name"
+                aria-describedby="message"
+                required
+            >
+            <button type="submit" id="submitBtn">
+                Submit form <span aria-hidden="true">→</span>
+            </button>
+        </form>
+
+        <p id="message" role="status" hidden></p>
+
+        <div class="footer">
+            BUILT WITH <span>HTML</span> · <span>CSS</span> ·
+            <span>JAVASCRIPT</span>
+            <br>
+            Learn by building. Improve by practicing.
+        </div>
+    </main>
+</body>
+</html>
