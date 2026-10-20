@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="A JavaScript DOM practice project for searching and filtering a list of fruits."
+    >
+
+    <title>Fruit Finder | JavaScript Practice</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="container">
+        <p class="eyebrow">JAVASCRIPT MINI PROJECT</p>
+
+        <h1>Fruit Finder<span>.</span></h1>
+
+        <p class="description">
+            Looking for something fresh?
+            Type a fruit name to filter your list instantly.
+        </p>
+
+        <div class="search-wrapper">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+
+            <label class="visually-hidden" for="searchInput">
+                Search fruits
+            </label>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search fruits..."
+                autocomplete="off"
+                aria-controls="fruitList"
+            >
+        </div>
+
+        <div class="list-header">
+            <h2>AVAILABLE FRUITS</h2>
+
+            <span
+                id="resultCount"
+                aria-live="polite"
+                aria-atomic="true"
+            >5 fruits</span>
+        </div>
+
+        <ul id="fruitList">
+            <li>
+                <span class="fruit-icon" aria-hidden="true">🍎</span>
+                <span class="fruit-name">Apple</span>
+                <span class="fruit-label">Fruit 01</span>
+            </li>
+
+            <li>
+                <span class="fruit-icon" aria-hidden="true">🍌</span>
+                <span class="fruit-name">Banana</span>
+                <span class="fruit-label">Fruit 02</span>
+            </li>
+
+            <li>
+                <span class="fruit-icon" aria-hidden="true">🥭</span>
+                <span class="fruit-name">Mango</span>
+                <span class="fruit-label">Fruit 03</span>
+            </li>
+
+            <li>
+                <span class="fruit-icon" aria-hidden="true">🍊</span>
+                <span class="fruit-name">Orange</span>
+                <span class="fruit-label">Fruit 04</span>
+            </li>
+
+            <li>
+                <span class="fruit-icon" aria-hidden="true">🍇</span>
+                <span class="fruit-name">Grapes</span>
+                <span class="fruit-label">Fruit 05</span>
+            </li>
+        </ul>
+
+        <p id="emptyMessage" role="status" hidden>
+            No fruits found. Try another search.
+        </p>
+
+        <footer class="footer">
+            BUILT WITH <span>HTML</span> · <span>CSS</span> ·
+            <span>JAVASCRIPT</span>
+            <br>
+            Small steps. Consistent progress.
+        </footer>
+    </main>
+</body>
+</html>
