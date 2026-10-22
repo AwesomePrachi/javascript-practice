@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="A responsive digital clock built with HTML, CSS, and JavaScript."
+    >
+
+    <title>Digital Clock | JavaScript Practice</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="clock-card">
+        <div class="clock-icon" aria-hidden="true">◷</div>
+
+        <p class="eyebrow">Live Time</p>
+
+        <h1>Digital Clock</h1>
+
+        <p class="subtitle">Every second, right on time.</p>
+
+        <div
+            class="time-display"
+            role="timer"
+            aria-label="Current local time"
+        >
+            <span class="time-unit" id="hours">00</span>
+
+            <span class="colon" aria-hidden="true">:</span>
+
+            <span class="time-unit" id="minutes">00</span>
+
+            <span class="colon" aria-hidden="true">:</span>
+
+            <span class="time-unit" id="seconds">00</span>
+        </div>
+
+        <p class="date-display" id="dateDisplay"></p>
+
+        <div class="status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Clock is running</span>
+        </div>
+
+        <footer>
+            BUILT WITH HTML · CSS · JAVASCRIPT
+        </footer>
+    </main>
+</body>
+</html>
