@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="An interactive FAQ accordion built with HTML, CSS, and JavaScript."
+    >
+
+    <title>FAQ Accordion | JavaScript Practice</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="faq-container">
+        <div class="icon-box" aria-hidden="true">✳</div>
+
+        <p class="eyebrow">Got Questions?</p>
+
+        <h1>Frequently Asked Questions</h1>
+
+        <p class="description">
+            Everything you need to know, all in one place.
+            Click a question to discover the answer.
+        </p>
+
+        <section class="faq-list" aria-label="Frequently asked questions">
+
+            <!-- Question 1 -->
+            <div class="faq-item">
+                <h2 class="faq-heading">
+                    <button
+                        class="faq-question"
+                        type="button"
+                        id="faq-question-1"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-1"
+                    >
+                        <span>What is JavaScript?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                </h2>
+
+                <div
+                    class="faq-answer"
+                    id="faq-answer-1"
+                    role="region"
+                    aria-labelledby="faq-question-1"
+                    hidden
+                >
+                    JavaScript is a programming language that makes websites
+                    interactive. It can respond to clicks, validate forms,
+                    update content, and much more.
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="faq-item">
+                <h2 class="faq-heading">
+                    <button
+                        class="faq-question"
+                        type="button"
+                        id="faq-question-2"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-2"
+                    >
+                        <span>What is the DOM?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                </h2>
+
+                <div
+                    class="faq-answer"
+                    id="faq-answer-2"
+                    role="region"
+                    aria-labelledby="faq-question-2"
+                    hidden
+                >
+                    DOM stands for Document Object Model. It represents an
+                    HTML document as a tree of objects that JavaScript can
+                    select, modify, and interact with.
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="faq-item">
+                <h2 class="faq-heading">
+                    <button
+                        class="faq-question"
+                        type="button"
+                        id="faq-question-3"
+                        aria-expanded="false"
+                        aria-controls="faq-answer-3"
+                    >
+                        <span>Why do we use addEventListener()?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                </h2>
+
+                <div
+                    class="faq-answer"
+                    id="faq-answer-3"
+                    role="region"
+                    aria-labelledby="faq-question-3"
+                    hidden
+                >
+                    The addEventListener() method lets us run a function
+                    when an event occurs, such as a click, a key press,
+                    or a change to an input.
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <span class="footer-dot" aria-hidden="true"></span>
+            BUILT WITH HTML · CSS · JAVASCRIPT
+        </footer>
+    </main>
+</body>
+</html>

@@ -1,0 +1,268 @@
+/* ---------- Reset & Base Styles ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+
+    font-family: "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at 15% 15%, #191b38 0%, transparent 38%),
+        radial-gradient(circle at 85% 85%, #142c30 0%, transparent 35%),
+        #090b12;
+
+    color: #f8fafc;
+}
+
+/* ---------- Main Container ---------- */
+.faq-container {
+    width: 100%;
+    max-width: 650px;
+    padding: 40px;
+
+    background: rgba(17, 20, 32, 0.92);
+    border: 1px solid #292d40;
+    border-radius: 24px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+
+    animation: fadeIn 0.7s ease;
+}
+
+/* ---------- Icon ---------- */
+.icon-box {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 24px;
+
+    border: 1px solid rgba(129, 140, 248, 0.3);
+    border-radius: 16px;
+    background: rgba(129, 140, 248, 0.12);
+
+    color: #a5b4fc;
+    font-size: 26px;
+}
+
+/* ---------- Heading ---------- */
+.eyebrow {
+    margin-bottom: 10px;
+
+    color: #9299f8;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin-bottom: 12px;
+
+    font-size: clamp(28px, 5vw, 38px);
+    font-weight: 650;
+    letter-spacing: -1.2px;
+    line-height: 1.2;
+}
+
+.description {
+    margin-bottom: 32px;
+
+    color: #929bad;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ---------- Accordion List ---------- */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    overflow: hidden;
+
+    border: 1px solid #292e40;
+    border-radius: 14px;
+    background: #0d101a;
+
+    transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.faq-item:hover {
+    border-color: #424967;
+}
+
+.faq-item.active {
+    border-color: #454b79;
+    background: #111522;
+}
+
+/* ---------- Question Button ---------- */
+.faq-heading {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 20px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+
+    color: #e5e7eb;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.faq-question:hover {
+    color: #c7d2fe;
+}
+
+.faq-question:focus-visible {
+    outline: 2px solid #818cf8;
+    outline-offset: -4px;
+}
+
+.faq-item.active .faq-question {
+    color: #c7d2fe;
+}
+
+/* ---------- Question Icon ---------- */
+.faq-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid #343950;
+    border-radius: 9px;
+
+    color: #a5b4fc;
+    font-size: 20px;
+    font-weight: 400;
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+    background: rgba(129, 140, 248, 0.12);
+    border-color: #555b91;
+}
+
+/* ---------- Answers ---------- */
+.faq-answer {
+    padding: 0 20px 20px;
+
+    color: #9ca6ba;
+    font-size: 14px;
+    line-height: 1.8;
+
+    animation: slideDown 0.3s ease;
+}
+
+/* Keep hidden answers hidden */
+.faq-answer[hidden] {
+    display: none;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 30px;
+
+    color: #687187;
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    text-align: center;
+}
+
+.footer-dot {
+    width: 5px;
+    height: 5px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    background: #818cf8;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 480px) {
+    .faq-container {
+        padding: 26px 18px;
+    }
+
+    .faq-question {
+        padding: 16px;
+        font-size: 14px;
+    }
+
+    .faq-answer {
+        padding: 0 16px 16px;
+        font-size: 13px;
+    }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
