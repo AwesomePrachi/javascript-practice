@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="A responsive image gallery built with HTML, CSS, and JavaScript."
+    >
+
+    <title>Image Gallery | JavaScript Practice</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="gallery-wrapper">
+        <p class="eyebrow">IMAGE GALLERY</p>
+
+        <h1>Explore <span>Beautiful</span> Places</h1>
+
+        <p class="subtitle">
+            A little collection of beautiful places around the world.
+        </p>
+
+        <section class="gallery-card" aria-label="Image gallery">
+
+            <!-- Main Image -->
+            <div class="image-container">
+                <img
+                    src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=85"
+                    alt="Beautiful mountain landscape"
+                    class="main-image"
+                    id="mainImage"
+                >
+
+                <!-- Previous Button -->
+                <button
+                    class="nav-button previous"
+                    id="prevButton"
+                    type="button"
+                    aria-label="Previous image"
+                >
+                    &#10094;
+                </button>
+
+                <!-- Next Button -->
+                <button
+                    class="nav-button next"
+                    id="nextButton"
+                    type="button"
+                    aria-label="Next image"
+                >
+                    &#10095;
+                </button>
+
+                <!-- Image Counter -->
+                <p
+                    class="image-counter"
+                    id="imageCounter"
+                    aria-live="polite"
+                    aria-atomic="true"
+                >1 / 4</p>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="thumbnail-list" id="thumbnailList" aria-label="Choose an image">
+                <button
+                    class="thumbnail active"
+                    type="button"
+                    data-index="0"
+                    aria-label="Show mountain landscape"
+                    aria-pressed="true"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=300&q=70"
+                        alt=""
+                    >
+                </button>
+
+                <button
+                    class="thumbnail"
+                    type="button"
+                    data-index="1"
+                    aria-label="Show tropical beach"
+                    aria-pressed="false"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=70"
+                        alt=""
+                    >
+                </button>
+
+                <button
+                    class="thumbnail"
+                    type="button"
+                    data-index="2"
+                    aria-label="Show ocean sunset"
+                    aria-pressed="false"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=300&q=70"
+                        alt=""
+                    >
+                </button>
+
+                <button
+                    class="thumbnail"
+                    type="button"
+                    data-index="3"
+                    aria-label="Show forest waterfall"
+                    aria-pressed="false"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=300&q=70"
+                        alt=""
+                    >
+                </button>
+            </div>
+
+            <!-- Image Details -->
+            <div class="image-info">
+                <div>
+                    <p class="image-title" id="imageTitle">Mountain Escape</p>
+
+                    <p class="image-hint">
+                        Use the arrows or thumbnails to explore
+                    </p>
+                </div>
+
+                <span class="gallery-label">PHOTO COLLECTION</span>
+            </div>
+        </section>
+
+        <footer class="footer">
+            BUILT WITH HTML · CSS · JAVASCRIPT
+        </footer>
+    </main>
+</body>
+</html>

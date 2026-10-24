@@ -1,0 +1,337 @@
+/* ---------- Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- Page ---------- */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 20px;
+
+    font-family: "Segoe UI", sans-serif;
+    color: #f8fafc;
+    background:
+        radial-gradient(ellipse at 10% 10%, #202044 0%, transparent 38%),
+        radial-gradient(ellipse at 90% 90%, #172b3b 0%, transparent 35%),
+        #090b12;
+}
+
+.gallery-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+
+    animation: fadeIn 0.8s ease;
+}
+
+/* ---------- Heading ---------- */
+.eyebrow {
+    margin-bottom: 12px;
+
+    color: #a5a5ff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+h1 {
+    margin-bottom: 12px;
+
+    font-size: clamp(30px, 5vw, 48px);
+    font-weight: 650;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+}
+
+h1 span {
+    color: #a5a5ff;
+}
+
+.subtitle {
+    margin-bottom: 32px;
+
+    color: #9ca6ba;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* ---------- Gallery Card ---------- */
+.gallery-card {
+    padding: 22px;
+
+    border: 1px solid #292e43;
+    border-radius: 24px;
+    background: rgba(17, 21, 35, 0.88);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Main Image ---------- */
+.image-container {
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid #30364b;
+    border-radius: 17px;
+    background: #171c2c;
+}
+
+.main-image {
+    display: block;
+    width: 100%;
+    height: clamp(240px, 48vw, 490px);
+
+    object-fit: cover;
+    opacity: 1;
+
+    transition: opacity 0.25s ease, transform 0.5s ease;
+}
+
+.main-image:hover {
+    transform: scale(1.015);
+}
+
+.main-image.changing {
+    opacity: 0.35;
+}
+
+/* ---------- Navigation Buttons ---------- */
+.nav-button {
+    position: absolute;
+    top: 50%;
+
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+
+    transform: translateY(-50%);
+    border: 1px solid rgba(185, 181, 255, 0.55);
+    border-radius: 50%;
+    background: rgba(25, 27, 53, 0.85);
+
+    color: #ffffff;
+    font-size: 26px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.nav-button:hover {
+    background: #5550a8;
+    border-color: #a5a5ff;
+}
+
+.nav-button:active {
+    transform: translateY(-50%) scale(0.93);
+}
+
+.nav-button:focus-visible,
+.thumbnail:focus-visible {
+    outline: 2px solid #a5a5ff;
+    outline-offset: 3px;
+}
+
+.previous {
+    left: 16px;
+}
+
+.next {
+    right: 16px;
+}
+
+/* ---------- Image Counter ---------- */
+.image-counter {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+
+    transform: translateX(-50%);
+    padding: 9px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    background: rgba(9, 11, 18, 0.8);
+
+    color: #f8fafc;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+}
+
+/* ---------- Thumbnails ---------- */
+.thumbnail-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.thumbnail {
+    overflow: hidden;
+    padding: 3px;
+
+    border: 1px solid #343950;
+    border-radius: 12px;
+    background: transparent;
+
+    cursor: pointer;
+    opacity: 0.7;
+
+    transition:
+        opacity 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.thumbnail img {
+    display: block;
+    width: 100%;
+    height: 95px;
+
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.thumbnail:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.thumbnail.active {
+    opacity: 1;
+    border: 2px solid #9690ff;
+    box-shadow: 0 0 18px rgba(129, 140, 248, 0.2);
+}
+
+/* ---------- Image Description ---------- */
+.image-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 20px;
+    text-align: left;
+}
+
+.image-title {
+    color: #e5e7eb;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.image-hint {
+    margin-top: 5px;
+
+    color: #8791a7;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.gallery-label {
+    flex-shrink: 0;
+    padding: 8px 12px;
+
+    border: 1px solid #343950;
+    border-radius: 30px;
+
+    color: #b7b8ff;
+    font-size: 11px;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    margin-top: 25px;
+
+    color: #697187;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    body {
+        padding: 25px 12px;
+    }
+
+    .gallery-card {
+        padding: 12px;
+        border-radius: 18px;
+    }
+
+    .main-image {
+        height: 300px;
+    }
+
+    .nav-button {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+
+    .previous {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+
+    .thumbnail-list {
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    .thumbnail img {
+        height: 65px;
+    }
+
+    .image-info {
+        align-items: flex-start;
+    }
+
+    .gallery-label {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .image-info {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
