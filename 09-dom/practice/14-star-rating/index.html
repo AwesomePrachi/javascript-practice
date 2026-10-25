@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="An interactive five-star rating component built with HTML, CSS, and JavaScript."
+    >
+
+    <title>Star Rating | DOM Practice</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <main class="rating-card">
+
+        <div class="icon-box" aria-hidden="true">★</div>
+
+        <p class="eyebrow">Your Feedback Matters</p>
+
+        <h1>Rate Your Experience</h1>
+
+        <p class="description">
+            How was your experience? Select a star
+            to share your rating with us.
+        </p>
+
+        <div
+            class="stars-container"
+            role="group"
+            aria-label="Rate your experience from 1 to 5 stars"
+        >
+            <button
+                class="star"
+                type="button"
+                data-rating="1"
+                aria-label="1 star"
+            >★</button>
+
+            <button
+                class="star"
+                type="button"
+                data-rating="2"
+                aria-label="2 stars"
+            >★</button>
+
+            <button
+                class="star"
+                type="button"
+                data-rating="3"
+                aria-label="3 stars"
+            >★</button>
+
+            <button
+                class="star"
+                type="button"
+                data-rating="4"
+                aria-label="4 stars"
+            >★</button>
+
+            <button
+                class="star"
+                type="button"
+                data-rating="5"
+                aria-label="5 stars"
+            >★</button>
+        </div>
+
+        <p
+            class="rating-message"
+            id="ratingMessage"
+            aria-live="polite"
+        >
+            Select a star to rate your experience.
+        </p>
+
+        <p class="rating-hint" id="ratingHint">
+            Your rating helps us improve.
+        </p>
+
+        <footer>
+            BUILT WITH HTML · CSS · JAVASCRIPT
+        </footer>
+
+    </main>
+
+</body>
+</html>
