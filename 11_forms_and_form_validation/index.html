@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
         name="description"
-        content="Practice HTML form elements and built-in form validation."
+        content="Practice custom JavaScript form validation and regular expressions."
     >
 
-    <title>Form Basics | JavaScript Practice</title>
+    <title>JavaScript Form Validation | JavaScript Practice</title>
 
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -19,13 +19,14 @@
         <section class="form-card">
             <header class="page-header">
                 <p class="eyebrow">JavaScript Practice · Chapter 11</p>
-                <h1>Form Basics</h1>
+                <h1>Form Validation</h1>
                 <p class="description">
-                    Learn HTML form controls and built-in validation.
+                    Practice custom validation, regular expressions,
+                    and dynamic error messages.
                 </p>
             </header>
 
-            <form id="profileForm">
+            <form id="profileForm" novalidate>
                 <div class="form-field">
                     <label for="name">Name</label>
                     <input
@@ -33,9 +34,13 @@
                         id="name"
                         name="name"
                         placeholder="Enter your name"
+                        autocomplete="name"
                         required
-                        minlength="3"
+                        aria-describedby="nameError"
                     >
+                    <small class="field-error" id="nameError" hidden>
+                        Please enter a name with at least 3 characters.
+                    </small>
                 </div>
 
                 <div class="form-field">
@@ -45,8 +50,13 @@
                         id="email"
                         name="email"
                         placeholder="you@example.com"
+                        autocomplete="email"
                         required
+                        aria-describedby="emailError"
                     >
+                    <small class="field-error" id="emailError" hidden>
+                        Please enter a valid email format.
+                    </small>
                 </div>
 
                 <div class="form-field">
@@ -68,7 +78,7 @@
                         name="about"
                         rows="4"
                         maxlength="300"
-                        placeholder="Tell us about yourself"
+                        placeholder="Tell us a little about yourself"
                     ></textarea>
                 </div>
 
@@ -79,16 +89,20 @@
                         id="password"
                         name="password"
                         placeholder="Enter a practice password"
+                        autocomplete="new-password"
                         required
-                        minlength="8"
+                        aria-describedby="passwordHint passwordError"
                     >
-                    <small class="field-hint">
+                    <small class="field-hint" id="passwordHint">
                         Use at least 8 characters for this exercise.
+                    </small>
+                    <small class="field-error" id="passwordError" hidden>
+                        Password must contain at least 8 characters.
                     </small>
                 </div>
 
                 <button class="submit-button" type="submit">
-                    Continue
+                    Validate Form
                 </button>
 
                 <p
@@ -96,16 +110,18 @@
                     id="formMessage"
                     role="status"
                     aria-live="polite"
+                    tabindex="-1"
                 ></p>
             </form>
 
             <section class="concepts" aria-labelledby="conceptsHeading">
                 <h2 id="conceptsHeading">Concepts Practiced</h2>
                 <ul>
-                    <li>HTML form controls</li>
-                    <li>Required fields and length constraints</li>
-                    <li>Input types and labels</li>
-                    <li>JavaScript submit events</li>
+                    <li>Submit events and preventDefault()</li>
+                    <li>Reading input values and trimming whitespace</li>
+                    <li>Conditional validation messages</li>
+                    <li>Regular expressions and test()</li>
+                    <li>Updating the DOM with textContent</li>
                 </ul>
             </section>
 
