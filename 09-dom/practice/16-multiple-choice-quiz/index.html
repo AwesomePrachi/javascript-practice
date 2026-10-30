@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="An interactive multiple-choice quiz built with HTML, CSS, and JavaScript."
+    >
+
+    <title>CodeQuiz | JavaScript Challenge</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="quiz-card">
+
+        <!-- Quiz Screen -->
+        <section id="quizScreen">
+            <header class="quiz-header">
+                <div class="logo" aria-hidden="true">&lt;/&gt;</div>
+
+                <div>
+                    <p class="eyebrow">Interactive Challenge</p>
+                    <h1>CodeQuiz</h1>
+                    <p class="header-description">
+                        Test your JavaScript knowledge.
+                    </p>
+                </div>
+            </header>
+
+            <!-- Progress -->
+            <div class="progress-section">
+                <div class="progress-info">
+                    <span>Question 1 of 5</span>
+                    <strong>0%</strong>
+                </div>
+
+                <div class="progress-track">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Question -->
+            <p class="question-label">Your Question</p>
+
+            <h2 class="question-text">
+                What does HTML stand for?
+            </h2>
+
+            <!-- Static Answer Options -->
+            <div class="answers">
+                <button class="answer-button" type="button">
+                    <span class="answer-letter">A</span>
+                    <span class="answer-text">
+                        Hyper Text Markup Language
+                    </span>
+                </button>
+
+                <button class="answer-button" type="button">
+                    <span class="answer-letter">B</span>
+                    <span class="answer-text">
+                        High Transfer Machine Language
+                    </span>
+                </button>
+
+                <button class="answer-button" type="button">
+                    <span class="answer-letter">C</span>
+                    <span class="answer-text">
+                        Hyper Tool Multi Language
+                    </span>
+                </button>
+
+                <button class="answer-button" type="button">
+                    <span class="answer-letter">D</span>
+                    <span class="answer-text">
+                        Home Text Management Language
+                    </span>
+                </button>
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback">
+                <!-- Answer feedback will be added later. -->
+            </div>
+
+            <!-- Footer -->
+            <div class="quiz-footer">
+                <p class="score-label">
+                    Current score: <strong>0</strong>
+                </p>
+
+                <button class="primary-button" type="button" disabled>
+                    Next Question →
+                </button>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section class="results hidden">
+            <div class="result-icon" aria-hidden="true">🏆</div>
+
+            <p class="result-eyebrow">QUIZ COMPLETED</p>
+
+            <h2 class="result-title">Great job!</h2>
+
+            <p class="result-description">
+                You completed the JavaScript challenge.
+            </p>
+
+            <div class="result-score-card">
+                <p class="result-percentage">0%</p>
+
+                <p class="result-fraction">
+                    You scored 0 out of 5.
+                </p>
+
+                <div class="result-bar-track">
+                    <div class="result-bar"></div>
+                </div>
+            </div>
+
+            <button class="primary-button" type="button">
+                ↻ Play Again
+            </button>
+        </section>
+
+        <footer>BUILT WITH HTML · CSS · JAVASCRIPT</footer>
+
+    </main>
+</body>
+</html>
