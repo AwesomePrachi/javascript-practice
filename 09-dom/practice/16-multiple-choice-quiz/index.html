@@ -12,6 +12,7 @@
     <title>CodeQuiz | JavaScript Challenge</title>
 
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <main class="quiz-card">
@@ -33,7 +34,7 @@
             <!-- Progress -->
             <div class="progress-section">
                 <div class="progress-info">
-                    <span>Question 1 of 5</span>
+                    <span id="questionCounter">Question 1 of 5</span>
                     <strong>0%</strong>
                 </div>
 
@@ -45,39 +46,13 @@
             <!-- Question -->
             <p class="question-label">Your Question</p>
 
-            <h2 class="question-text">
+            <h2 class="question-text" id="questionText">
                 What does HTML stand for?
             </h2>
 
-            <!-- Static Answer Options -->
-            <div class="answers">
-                <button class="answer-button" type="button">
-                    <span class="answer-letter">A</span>
-                    <span class="answer-text">
-                        Hyper Text Markup Language
-                    </span>
-                </button>
-
-                <button class="answer-button" type="button">
-                    <span class="answer-letter">B</span>
-                    <span class="answer-text">
-                        High Transfer Machine Language
-                    </span>
-                </button>
-
-                <button class="answer-button" type="button">
-                    <span class="answer-letter">C</span>
-                    <span class="answer-text">
-                        Hyper Tool Multi Language
-                    </span>
-                </button>
-
-                <button class="answer-button" type="button">
-                    <span class="answer-letter">D</span>
-                    <span class="answer-text">
-                        Home Text Management Language
-                    </span>
-                </button>
+            <!-- Answer Options -->
+            <div class="answers" id="answersContainer">
+                <!-- Answer buttons will be created using JavaScript. -->
             </div>
 
             <!-- Feedback -->
