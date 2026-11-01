@@ -374,3 +374,166 @@ footer {
         padding: 11px 14px;
     }
 }
+
+
+/* ---------- Answer Selection States ---------- */
+
+.answer-button.correct {
+    border-color: rgba(52, 211, 153, 0.65);
+    background: rgba(16, 185, 129, 0.09);
+    color: #a7f3d0;
+}
+
+.answer-button.correct .answer-letter {
+    border-color: #34d399;
+    background: rgba(52, 211, 153, 0.15);
+    color: #6ee7b7;
+}
+
+.answer-button.incorrect {
+    border-color: rgba(251, 113, 133, 0.65);
+    background: rgba(244, 63, 94, 0.09);
+    color: #fecdd3;
+}
+
+.answer-button.incorrect .answer-letter {
+    border-color: #fb7185;
+    background: rgba(251, 113, 133, 0.12);
+    color: #fda4af;
+}
+
+/* ---------- Answer Button Status ---------- */
+
+.answer-status {
+    margin-left: auto;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* ---------- Disabled Answer Buttons ---------- */
+
+.answer-button:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+/* ---------- Answer Feedback ---------- */
+
+.feedback {
+    display: none;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: #cbd5e1;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.feedback.visible {
+    display: block;
+}
+
+.feedback.success {
+    border-color: rgba(52, 211, 153, 0.25);
+    background: rgba(16, 185, 129, 0.07);
+}
+
+.feedback.error {
+    border-color: rgba(251, 113, 133, 0.25);
+    background: rgba(244, 63, 94, 0.07);
+}
+
+.feedback strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.feedback.success strong {
+    color: var(--green);
+}
+
+.feedback.error strong {
+    color: var(--red);
+}
+
+/* ---------- Answer Selection States ---------- */
+
+.answer-button.correct {
+    border-color: rgba(52, 211, 153, 0.65);
+    background: rgba(16, 185, 129, 0.09);
+    color: #a7f3d0;
+}
+
+.answer-button.correct .answer-letter {
+    border-color: #34d399;
+    background: rgba(52, 211, 153, 0.15);
+    color: #6ee7b7;
+}
+
+.answer-button.incorrect {
+    border-color: rgba(251, 113, 133, 0.65);
+    background: rgba(244, 63, 94, 0.09);
+    color: #fecdd3;
+}
+
+.answer-button.incorrect .answer-letter {
+    border-color: #fb7185;
+    background: rgba(251, 113, 133, 0.12);
+    color: #fda4af;
+}
+
+/* ---------- Answer Button Status ---------- */
+
+.answer-status {
+    margin-left: auto;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* ---------- Disabled Answer Buttons ---------- */
+
+.answer-button:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+/* ---------- Answer Feedback ---------- */
+
+.feedback {
+    display: none;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: #cbd5e1;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.feedback.visible {
+    display: block;
+}
+
+.feedback.success {
+    border-color: rgba(52, 211, 153, 0.25);
+    background: rgba(16, 185, 129, 0.07);
+}
+
+.feedback.error {
+    border-color: rgba(251, 113, 133, 0.25);
+    background: rgba(244, 63, 94, 0.07);
+}
+
+.feedback strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.feedback.success strong {
+    color: var(--green);
+}
+
+.feedback.error strong {
+    color: var(--red);
+}

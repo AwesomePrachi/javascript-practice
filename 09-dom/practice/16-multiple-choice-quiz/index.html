@@ -56,17 +56,26 @@
             </div>
 
             <!-- Feedback -->
-            <div class="feedback">
-                <!-- Answer feedback will be added later. -->
+            <div
+                class="feedback"
+                id="feedback"
+                aria-live="polite"
+                aria-atomic="true"
+            >
             </div>
 
             <!-- Footer -->
             <div class="quiz-footer">
                 <p class="score-label">
-                    Current score: <strong>0</strong>
+                    Current score: <strong id="currentScore">0</strong>
                 </p>
 
-                <button class="primary-button" type="button" disabled>
+                <button
+                    class="primary-button"
+                    id="nextButton"
+                    type="button"
+                    disabled
+                >
                     Next Question →
                 </button>
             </div>
