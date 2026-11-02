@@ -67,13 +67,34 @@ const questions = [
 
 // ---------- 2. Select HTML Elements ----------
 
+// Quiz screens.
+const quizScreen = document.querySelector("#quizScreen");
+const resultsScreen = document.querySelector("#resultsScreen");
+
+// Progress elements.
 const questionCounter = document.querySelector("#questionCounter");
+const progressPercent = document.querySelector("#progressPercent");
+const progressTrack = document.querySelector("#progressTrack");
+const progressBar = document.querySelector("#progressBar");
+
+// Question and answer elements.
 const questionText = document.querySelector("#questionText");
 const answersContainer = document.querySelector("#answersContainer");
-
 const feedback = document.querySelector("#feedback");
+
+// Quiz controls.
 const currentScoreElement = document.querySelector("#currentScore");
 const nextButton = document.querySelector("#nextButton");
+
+// Result elements.
+const resultIcon = document.querySelector("#resultIcon");
+const resultTitle = document.querySelector("#resultTitle");
+const resultDescription = document.querySelector("#resultDescription");
+const resultPercentage = document.querySelector("#resultPercentage");
+const resultFraction = document.querySelector("#resultFraction");
+const resultProgressTrack = document.querySelector("#resultProgressTrack");
+const resultBar = document.querySelector("#resultBar");
+const restartButton = document.querySelector("#restartButton");
 
 // ---------- 3. Track Quiz State ----------
 
@@ -81,17 +102,41 @@ let currentQuestionIndex = 0;
 let score = 0;
 let answerSelected = false;
 
-// ---------- 4. Display the Current Question ----------
+// ---------- 4. Update Quiz Progress ----------
+
+function updateProgress(answeredQuestions = currentQuestionIndex) {
+    const percentage = Math.round(
+        (answeredQuestions / questions.length) * 100
+    );
+
+    questionCounter.textContent =
+        `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+    progressPercent.textContent = `${percentage}%`;
+
+    progressBar.style.width = `${percentage}%`;
+
+    progressTrack.setAttribute(
+        "aria-valuenow",
+        answeredQuestions
+    );
+
+    progressTrack.setAttribute(
+        "aria-valuetext",
+        `${answeredQuestions} of ${questions.length} questions answered`
+    );
+}
+
+// ---------- 5. Display the Current Question ----------
 
 function showQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
 
-    // Display question number.
-    questionCounter.textContent =
-        `Question ${currentQuestionIndex + 1} of ${questions.length}`;
-
-    // Display question.
+    // Display the question.
     questionText.textContent = currentQuestion.question;
+
+    // Update progress information.
+    updateProgress();
 
     // Reset answer selection.
     answerSelected = false;
@@ -100,11 +145,17 @@ function showQuestion() {
     feedback.className = "feedback";
     feedback.replaceChildren();
 
-    // Keep navigation disabled until Push 4.
+    // Disable the next button until an answer is selected.
     nextButton.disabled = true;
 
-    // Remove previously displayed options.
+    // Remove previous answer options.
     answersContainer.replaceChildren();
+
+    // Update the next button label.
+    nextButton.textContent =
+        currentQuestionIndex === questions.length - 1
+            ? "See Results →"
+            : "Next Question →";
 
     // Create answer buttons dynamically.
     currentQuestion.options.forEach(function (option, index) {
@@ -134,7 +185,7 @@ function showQuestion() {
         // Add elements to the button.
         button.append(letter, answerText, status);
 
-        // Store answer index in a data attribute.
+        // Store the answer index.
         button.dataset.index = index;
 
         // Listen for answer selection.
@@ -146,11 +197,11 @@ function showQuestion() {
         answersContainer.appendChild(button);
     });
 
-    // Display current score.
+    // Update the current score.
     currentScoreElement.textContent = score;
 }
 
-// ---------- 5. Check the Selected Answer ----------
+// ---------- 6. Check the Selected Answer ----------
 
 function checkAnswer(selectedButton) {
     // Prevent selecting multiple answers.
@@ -166,7 +217,7 @@ function checkAnswer(selectedButton) {
     // Get current question.
     const currentQuestion = questions[currentQuestionIndex];
 
-    // Check whether the answer is correct.
+    // Check whether the selected answer is correct.
     const isCorrect =
         selectedIndex === currentQuestion.correctAnswer;
 
@@ -174,7 +225,7 @@ function checkAnswer(selectedButton) {
     const answerButtons =
         answersContainer.querySelectorAll(".answer-button");
 
-    // Disable all buttons and highlight answers.
+    // Disable all options and highlight the answers.
     answerButtons.forEach(function (button) {
         button.disabled = true;
 
@@ -195,7 +246,7 @@ function checkAnswer(selectedButton) {
         }
     });
 
-    // Update score and show feedback.
+    // Update score and display feedback.
     if (isCorrect) {
         score++;
 
@@ -220,10 +271,113 @@ function checkAnswer(selectedButton) {
         feedback.append(heading, explanation);
     }
 
-    // Update displayed score.
+    // Update the displayed score.
     currentScoreElement.textContent = score;
+
+    // Update progress after answering.
+    updateProgress(currentQuestionIndex + 1);
+
+    // Enable navigation to the next question.
+    nextButton.disabled = false;
 }
 
-// ---------- 6. Start the Quiz ----------
+// ---------- 7. Move to the Next Question ----------
+
+nextButton.addEventListener("click", function () {
+    // Do not continue without selecting an answer.
+    if (!answerSelected) {
+        return;
+    }
+
+    // Move to the next question.
+    currentQuestionIndex++;
+
+    // Check whether more questions are available.
+    if (currentQuestionIndex < questions.length) {
+        showQuestion();
+    } else {
+        // All questions have been answered.
+        showResults();
+    }
+});
+
+// ---------- 8. Display Final Results ----------
+
+function showResults() {
+    // Switch from quiz screen to results screen.
+    quizScreen.classList.add("hidden");
+    resultsScreen.classList.remove("hidden");
+
+    // Calculate final percentage.
+    const percentage = Math.round(
+        (score / questions.length) * 100
+    );
+
+    // Display final score and percentage.
+    resultPercentage.textContent = `${percentage}%`;
+
+    resultFraction.textContent =
+        `You scored ${score} out of ${questions.length}.`;
+
+    // Update the result progress bar.
+    resultProgressTrack.setAttribute(
+        "aria-valuenow",
+        percentage
+    );
+
+    resultProgressTrack.setAttribute(
+        "aria-valuetext",
+        `${percentage} percent`
+    );
+
+    // Display performance-based messages.
+    if (percentage === 100) {
+        resultIcon.textContent = "🏆";
+        resultTitle.textContent = "Perfect Score!";
+
+        resultDescription.textContent =
+            "Outstanding! You answered every question correctly.";
+    } else if (percentage >= 60) {
+        resultIcon.textContent = "🎉";
+        resultTitle.textContent = "Great Job!";
+
+        resultDescription.textContent =
+            "Nice work! Keep practicing to strengthen your skills.";
+    } else {
+        resultIcon.textContent = "💡";
+        resultTitle.textContent = "Keep Learning!";
+
+        resultDescription.textContent =
+            "Every attempt helps you improve. Try again and beat your score.";
+    }
+
+    // Animate the final score bar.
+    resultBar.style.width = "0%";
+
+    requestAnimationFrame(function () {
+        resultBar.style.width = `${percentage}%`;
+    });
+}
+
+// ---------- 9. Restart the Quiz ----------
+
+restartButton.addEventListener("click", function () {
+    // Reset quiz state.
+    currentQuestionIndex = 0;
+    score = 0;
+    answerSelected = false;
+
+    // Reset the results progress bar.
+    resultBar.style.width = "0%";
+
+    // Switch back to the quiz screen.
+    resultsScreen.classList.add("hidden");
+    quizScreen.classList.remove("hidden");
+
+    // Display the first question again.
+    showQuestion();
+});
+
+// ---------- 10. Start the Quiz ----------
 
 showQuestion();

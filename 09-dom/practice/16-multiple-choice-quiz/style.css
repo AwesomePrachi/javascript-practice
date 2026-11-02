@@ -132,6 +132,7 @@ h1 {
     height: 100%;
     border-radius: inherit;
     background: linear-gradient(90deg, #6366f1, #c084fc);
+    transition: width 0.4s ease;
 }
 
 /* ---------- Question ---------- */
@@ -178,7 +179,7 @@ h1 {
         transform 0.2s ease;
 }
 
-.answer-button:hover {
+.answer-button:hover:not(:disabled) {
     transform: translateY(-2px);
     border-color: #6469a6;
     background: #151a2a;
@@ -203,6 +204,43 @@ h1 {
     line-height: 1.5;
 }
 
+.answer-status {
+    margin-left: auto;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* ---------- Answer Selection States ---------- */
+
+.answer-button.correct {
+    border-color: rgba(52, 211, 153, 0.65);
+    background: rgba(16, 185, 129, 0.09);
+    color: #a7f3d0;
+}
+
+.answer-button.correct .answer-letter {
+    border-color: #34d399;
+    background: rgba(52, 211, 153, 0.15);
+    color: #6ee7b7;
+}
+
+.answer-button.incorrect {
+    border-color: rgba(251, 113, 133, 0.65);
+    background: rgba(244, 63, 94, 0.09);
+    color: #fecdd3;
+}
+
+.answer-button.incorrect .answer-letter {
+    border-color: #fb7185;
+    background: rgba(251, 113, 133, 0.12);
+    color: #fda4af;
+}
+
+.answer-button:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
 /* ---------- Feedback ---------- */
 
 .feedback {
@@ -214,6 +252,33 @@ h1 {
     color: #cbd5e1;
     font-size: 13px;
     line-height: 1.7;
+}
+
+.feedback.visible {
+    display: block;
+}
+
+.feedback.success {
+    border-color: rgba(52, 211, 153, 0.25);
+    background: rgba(16, 185, 129, 0.07);
+}
+
+.feedback.error {
+    border-color: rgba(251, 113, 133, 0.25);
+    background: rgba(244, 63, 94, 0.07);
+}
+
+.feedback strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.feedback.success strong {
+    color: var(--green);
+}
+
+.feedback.error strong {
+    color: var(--red);
 }
 
 /* ---------- Quiz Footer ---------- */
@@ -235,6 +300,8 @@ h1 {
     color: #e2e8f0;
     font-size: 15px;
 }
+
+/* ---------- Primary Button ---------- */
 
 .primary-button {
     padding: 12px 20px;
@@ -329,6 +396,8 @@ h1 {
     display: none !important;
 }
 
+/* ---------- Footer ---------- */
+
 footer {
     margin-top: 30px;
     color: #626c83;
@@ -375,165 +444,14 @@ footer {
     }
 }
 
+/* ---------- Reduced Motion ---------- */
 
-/* ---------- Answer Selection States ---------- */
-
-.answer-button.correct {
-    border-color: rgba(52, 211, 153, 0.65);
-    background: rgba(16, 185, 129, 0.09);
-    color: #a7f3d0;
-}
-
-.answer-button.correct .answer-letter {
-    border-color: #34d399;
-    background: rgba(52, 211, 153, 0.15);
-    color: #6ee7b7;
-}
-
-.answer-button.incorrect {
-    border-color: rgba(251, 113, 133, 0.65);
-    background: rgba(244, 63, 94, 0.09);
-    color: #fecdd3;
-}
-
-.answer-button.incorrect .answer-letter {
-    border-color: #fb7185;
-    background: rgba(251, 113, 133, 0.12);
-    color: #fda4af;
-}
-
-/* ---------- Answer Button Status ---------- */
-
-.answer-status {
-    margin-left: auto;
-    font-size: 17px;
-    font-weight: 700;
-}
-
-/* ---------- Disabled Answer Buttons ---------- */
-
-.answer-button:disabled {
-    cursor: default;
-    opacity: 1;
-}
-
-/* ---------- Answer Feedback ---------- */
-
-.feedback {
-    display: none;
-    margin-top: 20px;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: #cbd5e1;
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.feedback.visible {
-    display: block;
-}
-
-.feedback.success {
-    border-color: rgba(52, 211, 153, 0.25);
-    background: rgba(16, 185, 129, 0.07);
-}
-
-.feedback.error {
-    border-color: rgba(251, 113, 133, 0.25);
-    background: rgba(244, 63, 94, 0.07);
-}
-
-.feedback strong {
-    display: block;
-    margin-bottom: 3px;
-}
-
-.feedback.success strong {
-    color: var(--green);
-}
-
-.feedback.error strong {
-    color: var(--red);
-}
-
-/* ---------- Answer Selection States ---------- */
-
-.answer-button.correct {
-    border-color: rgba(52, 211, 153, 0.65);
-    background: rgba(16, 185, 129, 0.09);
-    color: #a7f3d0;
-}
-
-.answer-button.correct .answer-letter {
-    border-color: #34d399;
-    background: rgba(52, 211, 153, 0.15);
-    color: #6ee7b7;
-}
-
-.answer-button.incorrect {
-    border-color: rgba(251, 113, 133, 0.65);
-    background: rgba(244, 63, 94, 0.09);
-    color: #fecdd3;
-}
-
-.answer-button.incorrect .answer-letter {
-    border-color: #fb7185;
-    background: rgba(251, 113, 133, 0.12);
-    color: #fda4af;
-}
-
-/* ---------- Answer Button Status ---------- */
-
-.answer-status {
-    margin-left: auto;
-    font-size: 17px;
-    font-weight: 700;
-}
-
-/* ---------- Disabled Answer Buttons ---------- */
-
-.answer-button:disabled {
-    cursor: default;
-    opacity: 1;
-}
-
-/* ---------- Answer Feedback ---------- */
-
-.feedback {
-    display: none;
-    margin-top: 20px;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: #cbd5e1;
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.feedback.visible {
-    display: block;
-}
-
-.feedback.success {
-    border-color: rgba(52, 211, 153, 0.25);
-    background: rgba(16, 185, 129, 0.07);
-}
-
-.feedback.error {
-    border-color: rgba(251, 113, 133, 0.25);
-    background: rgba(244, 63, 94, 0.07);
-}
-
-.feedback strong {
-    display: block;
-    margin-bottom: 3px;
-}
-
-.feedback.success strong {
-    color: var(--green);
-}
-
-.feedback.error strong {
-    color: var(--red);
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }
