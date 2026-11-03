@@ -54,9 +54,10 @@ button {
     border-radius: 24px;
     background: rgba(17, 21, 34, 0.96);
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.38);
+    animation: fadeIn 0.6s ease;
 }
 
-/* ---------- Header ---------- */
+/* ---------- Quiz Header ---------- */
 
 .quiz-header {
     display: flex;
@@ -116,23 +117,22 @@ h1 {
 
 .progress-info strong {
     color: #c7d2fe;
+    font-weight: 600;
 }
 
-.progress-track,
-.result-bar-track {
+.progress-track {
     height: 6px;
     overflow: hidden;
     border-radius: 10px;
     background: #272d41;
 }
 
-.progress-bar,
-.result-bar {
+.progress-bar {
     width: 0%;
     height: 100%;
     border-radius: inherit;
     background: linear-gradient(90deg, #6366f1, #c084fc);
-    transition: width 0.4s ease;
+    transition: width 0.35s ease;
 }
 
 /* ---------- Question ---------- */
@@ -154,7 +154,11 @@ h1 {
     letter-spacing: -0.5px;
 }
 
-/* ---------- Answers ---------- */
+.question-text:focus {
+    outline: none;
+}
+
+/* ---------- Answer Buttons ---------- */
 
 .answers {
     display: grid;
@@ -173,6 +177,7 @@ h1 {
     color: #dbe1ef;
     text-align: left;
     cursor: pointer;
+
     transition:
         border-color 0.2s ease,
         background 0.2s ease,
@@ -183,6 +188,12 @@ h1 {
     transform: translateY(-2px);
     border-color: #6469a6;
     background: #151a2a;
+}
+
+.answer-button:focus-visible,
+.primary-button:focus-visible {
+    outline: 2px solid #a5b4fc;
+    outline-offset: 3px;
 }
 
 .answer-letter {
@@ -196,6 +207,7 @@ h1 {
     color: #a5aec3;
     font-size: 12px;
     font-weight: 700;
+    transition: all 0.2s ease;
 }
 
 .answer-text {
@@ -210,7 +222,7 @@ h1 {
     font-weight: 700;
 }
 
-/* ---------- Answer Selection States ---------- */
+/* Correct Answer */
 
 .answer-button.correct {
     border-color: rgba(52, 211, 153, 0.65);
@@ -223,6 +235,8 @@ h1 {
     background: rgba(52, 211, 153, 0.15);
     color: #6ee7b7;
 }
+
+/* Incorrect Selected Answer */
 
 .answer-button.incorrect {
     border-color: rgba(251, 113, 133, 0.65);
@@ -238,7 +252,6 @@ h1 {
 
 .answer-button:disabled {
     cursor: default;
-    opacity: 1;
 }
 
 /* ---------- Feedback ---------- */
@@ -252,6 +265,7 @@ h1 {
     color: #cbd5e1;
     font-size: 13px;
     line-height: 1.7;
+    animation: fadeIn 0.25s ease;
 }
 
 .feedback.visible {
@@ -301,8 +315,6 @@ h1 {
     font-size: 15px;
 }
 
-/* ---------- Primary Button ---------- */
-
 .primary-button {
     padding: 12px 20px;
     border: 1px solid #818cf8;
@@ -312,7 +324,12 @@ h1 {
     font-size: 13px;
     font-weight: 650;
     cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        background 0.2s ease;
 }
 
 .primary-button:hover:not(:disabled) {
@@ -324,10 +341,11 @@ h1 {
     cursor: not-allowed;
 }
 
-/* ---------- Results ---------- */
+/* ---------- Results Screen ---------- */
 
 .results {
     text-align: center;
+    animation: fadeIn 0.5s ease;
 }
 
 .result-icon {
@@ -339,6 +357,7 @@ h1 {
     border: 1px solid rgba(251, 191, 36, 0.3);
     border-radius: 26px;
     background: rgba(251, 191, 36, 0.09);
+    color: #fbbf24;
     font-size: 40px;
 }
 
@@ -353,6 +372,11 @@ h1 {
 .result-title {
     margin-bottom: 12px;
     font-size: 32px;
+    letter-spacing: -1px;
+}
+
+.result-title:focus {
+    outline: none;
 }
 
 .result-description {
@@ -374,6 +398,7 @@ h1 {
     color: #a5b4fc;
     font-size: 48px;
     font-weight: 750;
+    letter-spacing: -2px;
 }
 
 .result-fraction {
@@ -383,7 +408,19 @@ h1 {
 }
 
 .result-bar-track {
+    height: 7px;
+    overflow: hidden;
     margin-top: 20px;
+    border-radius: 10px;
+    background: #292f44;
+}
+
+.result-bar {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #6366f1, #34d399);
+    transition: width 0.7s ease;
 }
 
 .results .primary-button {
@@ -396,14 +433,26 @@ h1 {
     display: none !important;
 }
 
-/* ---------- Footer ---------- */
-
 footer {
     margin-top: 30px;
     color: #626c83;
     font-size: 10px;
     letter-spacing: 2px;
     text-align: center;
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ---------- Responsive ---------- */
@@ -450,8 +499,7 @@ footer {
     *,
     *::before,
     *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }

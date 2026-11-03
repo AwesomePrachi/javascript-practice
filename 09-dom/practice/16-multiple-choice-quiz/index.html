@@ -15,16 +15,18 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+
     <main class="quiz-card">
 
         <!-- Quiz Screen -->
-        <section id="quizScreen">
+        <section id="quizScreen" aria-labelledby="quizTitle">
+
             <header class="quiz-header">
                 <div class="logo" aria-hidden="true">&lt;/&gt;</div>
 
                 <div>
                     <p class="eyebrow">Interactive Challenge</p>
-                    <h1>CodeQuiz</h1>
+                    <h1 id="quizTitle">CodeQuiz</h1>
                     <p class="header-description">
                         Test your JavaScript knowledge.
                     </p>
@@ -40,12 +42,13 @@
 
                 <div
                     class="progress-track"
-                    id="progressTrack"
                     role="progressbar"
-                    aria-label="Quiz progress"
+                    id="progressTrack"
+                    aria-label="Quiz completion progress"
                     aria-valuemin="0"
                     aria-valuemax="5"
                     aria-valuenow="0"
+                    aria-valuetext="0 of 5 questions answered"
                 >
                     <div class="progress-bar" id="progressBar"></div>
                 </div>
@@ -54,16 +57,24 @@
             <!-- Question -->
             <p class="question-label">Your Question</p>
 
-            <h2 class="question-text" id="questionText">
+            <h2
+                class="question-text"
+                id="questionText"
+                tabindex="-1"
+            >
                 What does HTML stand for?
             </h2>
 
             <!-- Answer Options -->
-            <div class="answers" id="answersContainer">
+            <div
+                class="answers"
+                id="answersContainer"
+                aria-label="Answer options"
+            >
                 <!-- Answer buttons are created using JavaScript. -->
             </div>
 
-            <!-- Feedback -->
+            <!-- Answer Feedback -->
             <div
                 class="feedback"
                 id="feedback"
@@ -87,17 +98,27 @@
                     Next Question →
                 </button>
             </div>
+
         </section>
 
-        <!-- Results Screen -->
-        <section id="resultsScreen" class="results hidden">
+        <!-- Final Results Screen -->
+        <section
+            class="results hidden"
+            id="resultsScreen"
+            aria-labelledby="resultTitle"
+        >
+
             <div class="result-icon" id="resultIcon" aria-hidden="true">
                 🏆
             </div>
 
             <p class="result-eyebrow">QUIZ COMPLETED</p>
 
-            <h2 class="result-title" id="resultTitle" tabindex="-1">
+            <h2
+                class="result-title"
+                id="resultTitle"
+                tabindex="-1"
+            >
                 Great job!
             </h2>
 
@@ -116,12 +137,13 @@
 
                 <div
                     class="result-bar-track"
-                    id="resultProgressTrack"
                     role="progressbar"
+                    id="resultProgressTrack"
                     aria-label="Final quiz score"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="0"
+                    aria-valuetext="0 percent"
                 >
                     <div class="result-bar" id="resultBar"></div>
                 </div>
@@ -134,10 +156,12 @@
             >
                 ↻ Play Again
             </button>
+
         </section>
 
         <footer>BUILT WITH HTML · CSS · JAVASCRIPT</footer>
 
     </main>
+
 </body>
 </html>

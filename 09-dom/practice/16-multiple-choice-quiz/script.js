@@ -104,7 +104,10 @@ let answerSelected = false;
 
 // ---------- 4. Update Quiz Progress ----------
 
-function updateProgress(answeredQuestions = currentQuestionIndex) {
+function updateProgress() {
+    // Number of questions answered so far.
+    const answeredQuestions = currentQuestionIndex;
+
     const percentage = Math.round(
         (answeredQuestions / questions.length) * 100
     );
@@ -132,24 +135,18 @@ function updateProgress(answeredQuestions = currentQuestionIndex) {
 function showQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
 
-    // Display the question.
+    // Update the question and progress information.
     questionText.textContent = currentQuestion.question;
 
-    // Update progress information.
     updateProgress();
 
-    // Reset answer selection.
+    // Reset the answer state.
     answerSelected = false;
 
-    // Clear previous feedback.
     feedback.className = "feedback";
     feedback.replaceChildren();
 
-    // Disable the next button until an answer is selected.
     nextButton.disabled = true;
-
-    // Remove previous answer options.
-    answersContainer.replaceChildren();
 
     // Update the next button label.
     nextButton.textContent =
@@ -157,7 +154,10 @@ function showQuestion() {
             ? "See Results →"
             : "Next Question →";
 
-    // Create answer buttons dynamically.
+    // Remove previously displayed answers.
+    answersContainer.replaceChildren();
+
+    // Create four answer buttons.
     currentQuestion.options.forEach(function (option, index) {
         const button = document.createElement("button");
 
@@ -166,58 +166,50 @@ function showQuestion() {
 
         // Create answer letter.
         const letter = document.createElement("span");
-
         letter.className = "answer-letter";
         letter.textContent = String.fromCharCode(65 + index);
 
         // Create answer text.
         const answerText = document.createElement("span");
-
         answerText.className = "answer-text";
         answerText.textContent = option;
 
         // Create answer status indicator.
         const status = document.createElement("span");
-
         status.className = "answer-status";
         status.setAttribute("aria-hidden", "true");
 
-        // Add elements to the button.
         button.append(letter, answerText, status);
 
         // Store the answer index.
         button.dataset.index = index;
 
-        // Listen for answer selection.
+        // Check the selected answer.
         button.addEventListener("click", function () {
             checkAnswer(button);
         });
 
-        // Add button to the answers container.
         answersContainer.appendChild(button);
     });
 
-    // Update the current score.
+    // Update the displayed score.
     currentScoreElement.textContent = score;
 }
 
 // ---------- 6. Check the Selected Answer ----------
 
 function checkAnswer(selectedButton) {
-    // Prevent selecting multiple answers.
+    // Prevent selecting more than one answer.
     if (answerSelected) {
         return;
     }
 
     answerSelected = true;
 
-    // Get selected answer index.
     const selectedIndex = Number(selectedButton.dataset.index);
 
-    // Get current question.
     const currentQuestion = questions[currentQuestionIndex];
 
-    // Check whether the selected answer is correct.
     const isCorrect =
         selectedIndex === currentQuestion.correctAnswer;
 
@@ -225,7 +217,7 @@ function checkAnswer(selectedButton) {
     const answerButtons =
         answersContainer.querySelectorAll(".answer-button");
 
-    // Disable all options and highlight the answers.
+    // Disable all options and highlight the correct answer.
     answerButtons.forEach(function (button) {
         button.disabled = true;
 
@@ -271,32 +263,35 @@ function checkAnswer(selectedButton) {
         feedback.append(heading, explanation);
     }
 
-    // Update the displayed score.
+    // Update the score.
     currentScoreElement.textContent = score;
 
-    // Update progress after answering.
-    updateProgress(currentQuestionIndex + 1);
-
-    // Enable navigation to the next question.
+    // Enable the next button.
     nextButton.disabled = false;
+
+    // Update progress after the answer has been submitted.
+    currentQuestionIndex++;
+    updateProgress();
+
+    // Restore the current question index for navigation.
+    currentQuestionIndex--;
 }
 
 // ---------- 7. Move to the Next Question ----------
 
 nextButton.addEventListener("click", function () {
-    // Do not continue without selecting an answer.
     if (!answerSelected) {
         return;
     }
 
-    // Move to the next question.
     currentQuestionIndex++;
 
-    // Check whether more questions are available.
     if (currentQuestionIndex < questions.length) {
         showQuestion();
+
+        // Move keyboard focus to the next question.
+        questionText.focus();
     } else {
-        // All questions have been answered.
         showResults();
     }
 });
@@ -304,11 +299,9 @@ nextButton.addEventListener("click", function () {
 // ---------- 8. Display Final Results ----------
 
 function showResults() {
-    // Switch from quiz screen to results screen.
     quizScreen.classList.add("hidden");
     resultsScreen.classList.remove("hidden");
 
-    // Calculate final percentage.
     const percentage = Math.round(
         (score / questions.length) * 100
     );
@@ -319,7 +312,7 @@ function showResults() {
     resultFraction.textContent =
         `You scored ${score} out of ${questions.length}.`;
 
-    // Update the result progress bar.
+    // Update the accessible progress information.
     resultProgressTrack.setAttribute(
         "aria-valuenow",
         percentage
@@ -330,7 +323,7 @@ function showResults() {
         `${percentage} percent`
     );
 
-    // Display performance-based messages.
+    // Display a performance-based message.
     if (percentage === 100) {
         resultIcon.textContent = "🏆";
         resultTitle.textContent = "Perfect Score!";
@@ -357,6 +350,9 @@ function showResults() {
     requestAnimationFrame(function () {
         resultBar.style.width = `${percentage}%`;
     });
+
+    // Move keyboard focus to the results heading.
+    resultTitle.focus();
 }
 
 // ---------- 9. Restart the Quiz ----------
@@ -367,15 +363,18 @@ restartButton.addEventListener("click", function () {
     score = 0;
     answerSelected = false;
 
-    // Reset the results progress bar.
+    // Reset result progress bar.
     resultBar.style.width = "0%";
 
     // Switch back to the quiz screen.
     resultsScreen.classList.add("hidden");
     quizScreen.classList.remove("hidden");
 
-    // Display the first question again.
+    // Display the first question.
     showQuestion();
+
+    // Move keyboard focus to the quiz heading.
+    questionText.focus();
 });
 
 // ---------- 10. Start the Quiz ----------
