@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="A theme customization interface with dark and light mode options."
+    >
+
+    <title>Theme Studio | Dark Mode with Memory</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <!-- Page Header -->
+        <header class="header">
+
+            <div class="logo" aria-hidden="true">◐</div>
+
+            <div>
+                <p class="eyebrow">PERSONALIZATION</p>
+
+                <h1>Theme Studio</h1>
+
+                <p class="subtitle">
+                    Your interface, your preference.
+                </p>
+            </div>
+
+        </header>
+
+        <!-- Theme Settings Card -->
+        <section class="theme-card">
+
+            <h2 class="card-heading">
+                Appearance Settings
+            </h2>
+
+            <p class="card-description">
+                Customize the look of your experience.
+                Your preference will be remembered automatically.
+            </p>
+
+            <!-- Theme Preview -->
+            <div class="theme-preview">
+
+                <div class="preview-content">
+
+                    <p class="preview-label">
+                        CURRENT APPEARANCE
+                    </p>
+
+                    <h3 class="preview-title">
+                        Dark Mode
+                    </h3>
+
+                    <p class="preview-text">
+                        Easy on the eyes. Focus on what matters.
+                    </p>
+
+                </div>
+
+                <div
+                    class="preview-icon"
+                    aria-hidden="true"
+                >
+                    ☾
+                </div>
+
+            </div>
+
+            <!-- Theme Toggle Controls -->
+            <div class="control-section">
+
+                <div class="control-top">
+
+                    <div>
+                        <p class="control-title">
+                            Dark / Light Mode
+                        </p>
+
+                        <p class="control-description">
+                            Switch between your preferred appearances.
+                        </p>
+                    </div>
+
+                    <!-- Static toggle: JavaScript will be added in Push 2 -->
+                    <button
+                        class="theme-toggle"
+                        type="button"
+                        role="switch"
+                        aria-checked="true"
+                        aria-label="Dark mode"
+                    >
+                        <span
+                            class="toggle-circle"
+                            aria-hidden="true"
+                        >
+                            ☾
+                        </span>
+                    </button>
+
+                </div>
+
+                <!-- Active Theme Status -->
+                <div class="status-row">
+
+                    <span class="status-label">
+                        Active Theme
+                    </span>
+
+                    <span class="status-value">
+                        <span
+                            class="status-dot"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>Dark Mode</span>
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- Preference Memory Information -->
+            <div class="memory-card">
+
+                <div
+                    class="memory-icon"
+                    aria-hidden="true"
+                >
+                    ◈
+                </div>
+
+                <div>
+                    <p class="memory-title">
+                        Preference Memory
+                    </p>
+
+                    <p class="memory-description">
+                        Your theme preference will be saved and
+                        restored when you revisit the page.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            BUILT WITH HTML · CSS · JAVASCRIPT
+        </footer>
+
+    </main>
+
+</body>
+</html>
