@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +9,12 @@
         content="A theme customization interface with dark and light mode options."
     >
 
+    <meta name="theme-color" content="#090b12">
+
     <title>Theme Studio | Dark Mode with Memory</title>
 
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -56,11 +59,11 @@
                         CURRENT APPEARANCE
                     </p>
 
-                    <h3 class="preview-title">
+                    <h3 class="preview-title" id="previewTitle">
                         Dark Mode
                     </h3>
 
-                    <p class="preview-text">
+                    <p class="preview-text" id="previewText">
                         Easy on the eyes. Focus on what matters.
                     </p>
 
@@ -68,6 +71,7 @@
 
                 <div
                     class="preview-icon"
+                    id="previewIcon"
                     aria-hidden="true"
                 >
                     ☾
@@ -90,9 +94,9 @@
                         </p>
                     </div>
 
-                    <!-- Static toggle: JavaScript will be added in Push 2 -->
                     <button
                         class="theme-toggle"
+                        id="themeToggle"
                         type="button"
                         role="switch"
                         aria-checked="true"
@@ -100,6 +104,7 @@
                     >
                         <span
                             class="toggle-circle"
+                            id="toggleCircle"
                             aria-hidden="true"
                         >
                             ☾
@@ -121,7 +126,7 @@
                             aria-hidden="true"
                         ></span>
 
-                        <span>Dark Mode</span>
+                        <span id="statusText">Dark Mode</span>
                     </span>
 
                 </div>
@@ -143,7 +148,11 @@
                         Preference Memory
                     </p>
 
-                    <p class="memory-description">
+                    <p
+                        class="memory-description"
+                        id="memoryText"
+                        aria-live="polite"
+                    >
                         Your theme preference will be saved and
                         restored when you revisit the page.
                     </p>
