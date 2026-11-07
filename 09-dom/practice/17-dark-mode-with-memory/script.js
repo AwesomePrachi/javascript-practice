@@ -58,7 +58,6 @@ function getSavedTheme() {
 // 5. Apply the Selected Theme
 
 function applyTheme(theme) {
-
     // Update the current theme
     currentTheme = theme;
 

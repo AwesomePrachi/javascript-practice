@@ -1,4 +1,4 @@
-/* ---------- Dark Theme Variables ---------- */
+/* ---------- Theme Variables ---------- */
 
 :root {
     color-scheme: dark;
@@ -20,7 +20,7 @@
     --success: #34d399;
 }
 
-/* ---------- Light Theme Variables ---------- */
+/* ---------- Light Theme ---------- */
 
 [data-theme="light"] {
     color-scheme: light;
@@ -341,8 +341,6 @@ h1 {
     transition: transform 0.3s ease;
 }
 
-/* Light Mode Toggle */
-
 [data-theme="light"] .theme-toggle {
     border-color: #6366f1;
     background: #818cf8;
@@ -351,8 +349,6 @@ h1 {
 [data-theme="light"] .toggle-circle {
     transform: translateX(28px);
 }
-
-/* Keyboard Focus */
 
 .theme-toggle:focus-visible {
     outline: 2px solid var(--accent);
