@@ -27,6 +27,7 @@ This repository documents my progress through consistent hands-on JavaScript pra
 | 08 | Objects | [View Practice](./08-objects/) |
 | 09 | DOM | [View Practice](./09-dom/) |
 | 10 | Events and Event Handling | [View Practice](./10-events-and-event-handling/) |
+| 11 | Forms and Form Validation | [View Practice](./11_forms_and_form_validation/) |
 
 ## Repository Structure
 
@@ -109,6 +110,11 @@ javascript-practice/
 ├── 10-events-and-event-handling/
 │   ├── README.md
 │   ├── 01-event-listeners.js
+│   └── ...
+|
+├── 11_forms_and_form_validation/
+│   ├── README.md
+│   ├── index.html
 │   └── ...
 └── README.md
 ```
