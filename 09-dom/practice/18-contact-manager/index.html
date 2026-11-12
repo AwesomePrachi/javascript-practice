@@ -6,12 +6,13 @@
 
     <meta
         name="description"
-        content="A simple contact manager interface built with HTML and CSS."
+        content="A simple contact manager interface built with HTML, CSS and JavaScript."
     >
 
     <title>Contact Manager</title>
 
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -34,7 +35,13 @@
         <section class="stats-card" aria-label="Contact statistics">
             <div>
                 <p class="stats-label">Total Contacts</p>
-                <p class="stats-number">3</p>
+                <p
+                    class="stats-number"
+                    id="totalContacts"
+                    aria-live="polite"
+                >
+                    0
+                </p>
             </div>
 
             <div class="stats-icon" aria-hidden="true">♧</div>
@@ -95,7 +102,9 @@
             <div class="contacts-heading">
                 <h2 class="contacts-title">Your Contacts</h2>
 
-                <span class="count-badge">3 contacts</span>
+                <span class="count-badge" id="contactCount">
+                    0 contacts
+                </span>
             </div>
 
             <!-- Search -->
@@ -109,60 +118,18 @@
                 >
             </div>
 
-            <!-- Default Contact Cards -->
-            <div class="contact-list">
-
-                <article class="contact-item">
-                    <div class="avatar" aria-hidden="true">P</div>
-
-                    <div class="contact-details">
-                        <p class="contact-name">Priya Sharma</p>
-                        <p class="contact-phone">9876543210</p>
-                    </div>
-
-                    <button
-                        type="button"
-                        class="delete-button"
-                        aria-label="Delete Priya Sharma"
-                    >×</button>
-                </article>
-
-                <article class="contact-item">
-                    <div class="avatar" aria-hidden="true">R</div>
-
-                    <div class="contact-details">
-                        <p class="contact-name">Rahul Mehta</p>
-                        <p class="contact-phone">8765432109</p>
-                    </div>
-
-                    <button
-                        type="button"
-                        class="delete-button"
-                        aria-label="Delete Rahul Mehta"
-                    >×</button>
-                </article>
-
-                <article class="contact-item">
-                    <div class="avatar" aria-hidden="true">A</div>
-
-                    <div class="contact-details">
-                        <p class="contact-name">Ananya Patel</p>
-                        <p class="contact-phone">7654321098</p>
-                    </div>
-
-                    <button
-                        type="button"
-                        class="delete-button"
-                        aria-label="Delete Ananya Patel"
-                    >×</button>
-                </article>
-
-            </div>
+            <!-- Contacts will be rendered using JavaScript -->
+            <div
+                class="contact-list"
+                id="contactList"
+                aria-live="polite"
+                aria-atomic="false"
+            ></div>
         </section>
 
         <!-- Footer -->
         <footer class="footer">
-            BUILT WITH HTML · CSS
+            BUILT WITH HTML · CSS · JAVASCRIPT
         </footer>
 
     </main>
