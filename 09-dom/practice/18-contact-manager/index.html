@@ -1,137 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="A simple contact manager interface built with HTML, CSS and JavaScript."
-    >
-
-    <title>Contact Manager</title>
-
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d14">
+  <title>Contact Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
-    <main class="app">
 
-        <!-- Header -->
-        <header class="header">
-            <div class="logo" aria-hidden="true">♧</div>
+  <main class="app-container">
 
-            <div>
-                <p class="eyebrow">Personal Organizer</p>
-                <h1>Contact Manager</h1>
-                <p class="subtitle">
-                    Keep your important connections in one place.
-                </p>
-            </div>
-        </header>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">PERSONAL ORGANIZER</p>
+        <h1>Contact Manager</h1>
+        <p class="subtitle">Keep your important connections in one place.</p>
+      </div>
 
-        <!-- Contact Statistics -->
-        <section class="stats-card" aria-label="Contact statistics">
-            <div>
-                <p class="stats-label">Total Contacts</p>
-                <p
-                    class="stats-number"
-                    id="totalContacts"
-                    aria-live="polite"
-                >
-                    0
-                </p>
-            </div>
+      <div class="header-icon" aria-hidden="true">✦</div>
+    </header>
 
-            <div class="stats-icon" aria-hidden="true">♧</div>
-        </section>
+    <section class="stats-card">
+      <div class="stats-icon" aria-hidden="true">♧</div>
 
-        <!-- Add Contact Form -->
-        <section class="panel" aria-labelledby="formTitle">
-            <h2 class="section-title" id="formTitle">
-                Add New Contact
-            </h2>
+      <div class="stats-info">
+        <p class="stats-label">TOTAL CONTACTS</p>
+        <h2 id="totalContacts">0</h2>
+      </div>
 
-            <p class="section-description">
-                Save someone's details to your contact list.
-            </p>
+      <span class="stats-badge">Your contacts</span>
+    </section>
 
-            <form>
-                <div class="form-grid">
+    <section class="form-section">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">GET STARTED</p>
+          <h2>Add a new contact</h2>
+        </div>
+        <span class="plus-icon" aria-hidden="true">+</span>
+      </div>
 
-                    <div class="field">
-                        <label for="contactName">Full Name</label>
+      <form id="contactForm">
+        <div class="input-group">
+          <label for="contactName">Full name</label>
+          <input
+            type="text"
+            id="contactName"
+            placeholder="Enter contact name"
+            autocomplete="name"
+            required
+          >
+        </div>
 
-                        <div class="input-wrapper">
-                            <span aria-hidden="true">♙</span>
+        <div class="input-group">
+          <label for="contactPhone">Phone number</label>
+          <input
+            type="tel"
+            id="contactPhone"
+            placeholder="Enter phone number"
+            autocomplete="tel"
+            required
+          >
+        </div>
 
-                            <input
-                                type="text"
-                                id="contactName"
-                                placeholder="e.g. Priya Sharma"
-                            >
-                        </div>
-                    </div>
+        <button type="submit" class="add-button">
+          <span aria-hidden="true">+</span>
+          Add Contact
+        </button>
+      </form>
+    </section>
 
-                    <div class="field">
-                        <label for="contactPhone">Phone Number</label>
+    <section class="contacts-section">
+      <div class="contacts-heading">
+        <div>
+          <p class="section-label">YOUR DIRECTORY</p>
+          <h2>All Contacts</h2>
+        </div>
 
-                        <div class="input-wrapper">
-                            <span aria-hidden="true">⌕</span>
+        <span class="contact-count" id="contactCount">0 contacts</span>
+      </div>
 
-                            <input
-                                type="tel"
-                                id="contactPhone"
-                                placeholder="e.g. 9876543210"
-                            >
-                        </div>
-                    </div>
+      <div class="search-box">
+        <span aria-hidden="true">⌕</span>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search contacts..."
+          aria-label="Search contacts"
+        >
+      </div>
 
-                </div>
+      <div class="contact-list" id="contactList" aria-live="polite">
+        <!-- Contacts will be rendered here using JavaScript -->
+      </div>
+    </section>
 
-                <button type="button" class="add-button">
-                    <span aria-hidden="true">＋</span>
-                    Add Contact
-                </button>
-            </form>
-        </section>
+    <footer class="app-footer">
+      <p>Made for keeping connections close.</p>
+    </footer>
 
-        <!-- Contact List -->
-        <section class="panel contacts-panel">
-            <div class="contacts-heading">
-                <h2 class="contacts-title">Your Contacts</h2>
+  </main>
 
-                <span class="count-badge" id="contactCount">
-                    0 contacts
-                </span>
-            </div>
-
-            <!-- Search -->
-            <div class="search-wrapper">
-                <span aria-hidden="true">⌕</span>
-
-                <input
-                    type="search"
-                    placeholder="Search contacts by name..."
-                    aria-label="Search contacts by name"
-                >
-            </div>
-
-            <!-- Contacts will be rendered using JavaScript -->
-            <div
-                class="contact-list"
-                id="contactList"
-                aria-live="polite"
-                aria-atomic="false"
-            ></div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            BUILT WITH HTML · CSS · JAVASCRIPT
-        </footer>
-
-    </main>
 </body>
 </html>
