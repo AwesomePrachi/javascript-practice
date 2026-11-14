@@ -14,16 +14,41 @@ const contactForm = document.querySelector("#contactForm");
 const contactName = document.querySelector("#contactName");
 const contactPhone = document.querySelector("#contactPhone");
 
+const searchInput = document.querySelector("#searchInput");
+
 // 3. Display contacts
-function renderContacts() {
+function renderContacts(filteredContacts = contacts) {
+  // Clear the previous contact list
   contactList.replaceChildren();
 
+  // Update the total contact count
   totalContacts.textContent = contacts.length;
 
   contactCount.textContent =
     `${contacts.length} ${contacts.length === 1 ? "contact" : "contacts"}`;
 
-  contacts.forEach(function (contact) {
+  // Show an empty state when no contacts exist
+  if (contacts.length === 0) {
+    showEmptyState(
+      "No contacts yet",
+      "Add your first contact to get started.",
+      "♧"
+    );
+    return;
+  }
+
+  // Show an empty state when the search has no matches
+  if (filteredContacts.length === 0) {
+    showEmptyState(
+      "No contacts found",
+      "Try searching with a different name.",
+      "⌕"
+    );
+    return;
+  }
+
+  // Create and display each contact
+  filteredContacts.forEach(function (contact) {
     const contactItem = document.createElement("article");
     contactItem.className = "contact-item";
 
@@ -45,48 +70,101 @@ function renderContacts() {
 
     details.append(name, phone);
 
-    contactItem.append(avatar, details);
+    // Create delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete-button";
+    deleteButton.type = "button";
+    deleteButton.textContent = "×";
+    deleteButton.setAttribute(
+      "aria-label",
+      `Delete ${contact.name}`
+    );
+
+    deleteButton.addEventListener("click", function () {
+      deleteContact(contact.id);
+    });
+
+    contactItem.append(avatar, details, deleteButton);
 
     contactList.appendChild(contactItem);
   });
 }
 
-// 4. Add a new contact
+// 4. Display empty states
+function showEmptyState(title, message, icon) {
+  const emptyState = document.createElement("div");
+  emptyState.className = "empty-state";
+
+  const emptyIcon = document.createElement("div");
+  emptyIcon.className = "empty-icon";
+  emptyIcon.textContent = icon;
+  emptyIcon.setAttribute("aria-hidden", "true");
+
+  const heading = document.createElement("h3");
+  heading.textContent = title;
+
+  const description = document.createElement("p");
+  description.textContent = message;
+
+  emptyState.append(emptyIcon, heading, description);
+
+  contactList.appendChild(emptyState);
+}
+
+// 5. Add a new contact
 function addContact(event) {
-  // Prevent the form from refreshing the page
   event.preventDefault();
 
-  // Get values from the input fields
   const name = contactName.value.trim();
   const phone = contactPhone.value.trim();
 
-  // Check whether both fields contain values
   if (name === "" || phone === "") {
     return;
   }
 
-  // Create a new contact object
   const newContact = {
     id: Date.now(),
     name: name,
     phone: phone
   };
 
-  // Add the new contact to the array
   contacts.push(newContact);
 
-  // Update the contact list on the page
+  // Clear the search so the newly added contact is visible
+  searchInput.value = "";
+
   renderContacts();
 
-  // Clear the form fields
   contactForm.reset();
-
-  // Return focus to the name input
   contactName.focus();
 }
 
-// 5. Listen for form submission
+// 6. Delete a contact
+function deleteContact(contactId) {
+  contacts = contacts.filter(function (contact) {
+    return contact.id !== contactId;
+  });
+
+  // Re-render using the current search value
+  searchContacts();
+}
+
+// 7. Search contacts by name
+function searchContacts() {
+  const searchTerm = searchInput.value.trim().toLowerCase();
+
+  const filteredContacts = contacts.filter(function (contact) {
+    return contact.name.toLowerCase().includes(searchTerm);
+  });
+
+  renderContacts(filteredContacts);
+}
+
+// 8. Listen for form submission
 contactForm.addEventListener("submit", addContact);
 
-// 6. Initial rendering
+// 9. Listen for search input
+searchInput.addEventListener("input", searchContacts);
+
+// 10. Initial rendering
 renderContacts();
