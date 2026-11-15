@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b0d14">
+  <meta
+    name="description"
+    content="A simple contact manager to add, search, and manage your contacts."
+  >
   <title>Contact Manager</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
@@ -12,17 +16,21 @@
 
   <main class="app-container">
 
+    <!-- Header -->
     <header class="app-header">
       <div>
         <p class="eyebrow">PERSONAL ORGANIZER</p>
         <h1>Contact Manager</h1>
-        <p class="subtitle">Keep your important connections in one place.</p>
+        <p class="subtitle">
+          Keep your important connections in one place.
+        </p>
       </div>
 
       <div class="header-icon" aria-hidden="true">✦</div>
     </header>
 
-    <section class="stats-card">
+    <!-- Contact Statistics -->
+    <section class="stats-card" aria-label="Contact statistics">
       <div class="stats-icon" aria-hidden="true">♧</div>
 
       <div class="stats-info">
@@ -33,34 +41,43 @@
       <span class="stats-badge">Your contacts</span>
     </section>
 
+    <!-- Add Contact Form -->
     <section class="form-section">
       <div class="section-heading">
         <div>
           <p class="section-label">GET STARTED</p>
           <h2>Add a new contact</h2>
         </div>
+
         <span class="plus-icon" aria-hidden="true">+</span>
       </div>
 
-      <form id="contactForm">
+      <form id="contactForm" novalidate>
+
         <div class="input-group">
           <label for="contactName">Full name</label>
+
           <input
             type="text"
             id="contactName"
             placeholder="Enter contact name"
             autocomplete="name"
+            maxlength="50"
+            aria-describedby="formMessage"
             required
           >
         </div>
 
         <div class="input-group">
           <label for="contactPhone">Phone number</label>
+
           <input
             type="tel"
             id="contactPhone"
             placeholder="Enter phone number"
             autocomplete="tel"
+            maxlength="20"
+            aria-describedby="formMessage"
             required
           >
         </div>
@@ -69,32 +86,54 @@
           <span aria-hidden="true">+</span>
           Add Contact
         </button>
+
+        <p
+          class="form-message"
+          id="formMessage"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+
       </form>
     </section>
 
+    <!-- Contact Directory -->
     <section class="contacts-section">
+
       <div class="contacts-heading">
         <div>
           <p class="section-label">YOUR DIRECTORY</p>
           <h2>All Contacts</h2>
         </div>
 
-        <span class="contact-count" id="contactCount">0 contacts</span>
+        <span class="contact-count" id="contactCount">
+          0 contacts
+        </span>
       </div>
 
+      <!-- Search -->
       <div class="search-box">
         <span aria-hidden="true">⌕</span>
+
         <input
           type="search"
           id="searchInput"
           placeholder="Search contacts..."
-          aria-label="Search contacts"
+          aria-label="Search contacts by name"
         >
       </div>
 
-      <div class="contact-list" id="contactList" aria-live="polite">
-        <!-- Contacts and empty states will be rendered here -->
+      <!-- Contact List -->
+      <div
+        class="contact-list"
+        id="contactList"
+        aria-live="polite"
+        aria-label="Contact list"
+      >
+        <!-- Contacts will be rendered using JavaScript -->
       </div>
+
     </section>
 
     <footer class="app-footer">
@@ -104,4 +143,4 @@
   </main>
 
 </body>
-</html>
+</html

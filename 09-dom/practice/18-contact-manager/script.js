@@ -15,46 +15,74 @@ const contactName = document.querySelector("#contactName");
 const contactPhone = document.querySelector("#contactPhone");
 
 const searchInput = document.querySelector("#searchInput");
+const formMessage = document.querySelector("#formMessage");
 
-// 3. Display contacts
+// 3. Show success and error messages
+function showMessage(message, type) {
+  formMessage.textContent = message;
+  formMessage.className = `form-message ${type}`;
+}
+
+// 4. Clear input validation styles
+function clearInputErrors() {
+  contactName.classList.remove("input-error");
+  contactPhone.classList.remove("input-error");
+}
+
+// 5. Validate phone number
+function isValidPhone(phone) {
+  const digitsOnly = phone.replace(/\D/g, "");
+
+  return /^\+?[\d\s()-]+$/.test(phone) &&
+    digitsOnly.length >= 7 &&
+    digitsOnly.length <= 15;
+}
+
+// 6. Normalize phone number for duplicate checking
+function normalizePhone(phone) {
+  return phone.replace(/\D/g, "");
+}
+
+// 7. Display contacts
 function renderContacts(filteredContacts = contacts) {
-  // Clear the previous contact list
   contactList.replaceChildren();
 
-  // Update the total contact count
+  // Update contact statistics
   totalContacts.textContent = contacts.length;
 
   contactCount.textContent =
     `${contacts.length} ${contacts.length === 1 ? "contact" : "contacts"}`;
 
-  // Show an empty state when no contacts exist
+  // Empty state: no contacts
   if (contacts.length === 0) {
     showEmptyState(
       "No contacts yet",
       "Add your first contact to get started.",
       "♧"
     );
+
     return;
   }
 
-  // Show an empty state when the search has no matches
+  // Empty state: no search results
   if (filteredContacts.length === 0) {
     showEmptyState(
       "No contacts found",
       "Try searching with a different name.",
       "⌕"
     );
+
     return;
   }
 
-  // Create and display each contact
+  // Render each contact
   filteredContacts.forEach(function (contact) {
     const contactItem = document.createElement("article");
     contactItem.className = "contact-item";
 
     const avatar = document.createElement("div");
     avatar.className = "avatar";
-    avatar.textContent = contact.name.charAt(0);
+    avatar.textContent = contact.name.charAt(0).toUpperCase();
     avatar.setAttribute("aria-hidden", "true");
 
     const details = document.createElement("div");
@@ -75,6 +103,7 @@ function renderContacts(filteredContacts = contacts) {
     deleteButton.className = "delete-button";
     deleteButton.type = "button";
     deleteButton.textContent = "×";
+
     deleteButton.setAttribute(
       "aria-label",
       `Delete ${contact.name}`
@@ -90,7 +119,7 @@ function renderContacts(filteredContacts = contacts) {
   });
 }
 
-// 4. Display empty states
+// 8. Display empty states
 function showEmptyState(title, message, icon) {
   const emptyState = document.createElement("div");
   emptyState.className = "empty-state";
@@ -111,45 +140,112 @@ function showEmptyState(title, message, icon) {
   contactList.appendChild(emptyState);
 }
 
-// 5. Add a new contact
+// 9. Add a new contact
 function addContact(event) {
   event.preventDefault();
+
+  clearInputErrors();
 
   const name = contactName.value.trim();
   const phone = contactPhone.value.trim();
 
-  if (name === "" || phone === "") {
+  // Validate name
+  if (name === "") {
+    showMessage("Please enter a contact name.", "error");
+    contactName.classList.add("input-error");
+    contactName.focus();
     return;
   }
 
+  // Validate phone input
+  if (phone === "") {
+    showMessage("Please enter a phone number.", "error");
+    contactPhone.classList.add("input-error");
+    contactPhone.focus();
+    return;
+  }
+
+  // Validate phone format
+  if (!isValidPhone(phone)) {
+    showMessage(
+      "Enter a valid phone number containing 7 to 15 digits.",
+      "error"
+    );
+
+    contactPhone.classList.add("input-error");
+    contactPhone.focus();
+    return;
+  }
+
+  // Check for duplicate phone numbers
+  const normalizedPhone = normalizePhone(phone);
+
+  const isDuplicate = contacts.some(function (contact) {
+    return normalizePhone(contact.phone) === normalizedPhone;
+  });
+
+  if (isDuplicate) {
+    showMessage(
+      "This phone number already exists in your contacts.",
+      "error"
+    );
+
+    contactPhone.classList.add("input-error");
+    contactPhone.focus();
+    return;
+  }
+
+  // Create a new contact object
   const newContact = {
     id: Date.now(),
     name: name,
     phone: phone
   };
 
+  // Add contact to the array
   contacts.push(newContact);
 
-  // Clear the search so the newly added contact is visible
+  // Clear search so the new contact is visible
   searchInput.value = "";
 
+  // Update the contact list
   renderContacts();
 
+  // Reset the form
   contactForm.reset();
+  clearInputErrors();
+
+  // Show success message
+  showMessage(
+    `${name} has been added successfully.`,
+    "success"
+  );
+
   contactName.focus();
 }
 
-// 6. Delete a contact
+// 10. Delete a contact
 function deleteContact(contactId) {
+  const deletedContact = contacts.find(function (contact) {
+    return contact.id === contactId;
+  });
+
   contacts = contacts.filter(function (contact) {
     return contact.id !== contactId;
   });
 
-  // Re-render using the current search value
+  // Update the list while keeping the current search
   searchContacts();
+
+  if (deletedContact) {
+    showMessage(
+      `${deletedContact.name} has been deleted.`,
+      "success"
+    );
+  }
 }
 
-// 7. Search contacts by name
+// 11. Search contacts by name
 function searchContacts() {
   const searchTerm = searchInput.value.trim().toLowerCase();
 
@@ -160,11 +256,20 @@ function searchContacts() {
   renderContacts(filteredContacts);
 }
 
-// 8. Listen for form submission
+// 12. Clear input error styling when typing
+contactName.addEventListener("input", function () {
+  contactName.classList.remove("input-error");
+});
+
+contactPhone.addEventListener("input", function () {
+  contactPhone.classList.remove("input-error");
+});
+
+// 13. Listen for form submission
 contactForm.addEventListener("submit", addContact);
 
-// 9. Listen for search input
+// 14. Listen for search input
 searchInput.addEventListener("input", searchContacts);
 
-// 10. Initial rendering
+// 15. Initial rendering
 renderContacts();

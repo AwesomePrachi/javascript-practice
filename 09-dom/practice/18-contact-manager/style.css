@@ -593,3 +593,78 @@ input:focus-visible {
     padding: 28px 12px;
   }
 }
+
+/* Form feedback messages */
+.form-message {
+  min-height: 20px;
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.form-message.success {
+  color: #34d399;
+}
+
+.form-message.error {
+  color: #f87171;
+}
+
+/* Input validation feedback */
+.input-group input.input-error {
+  border-color: #f87171;
+}
+
+.input-group input.input-error:focus {
+  outline-color: #f87171;
+}
+
+/* Improved button interaction */
+.add-button {
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background 0.2s ease;
+}
+
+.add-button:hover {
+  transform: translateY(-1px);
+}
+
+.add-button:active {
+  transform: translateY(0);
+}
+
+/* Consistent keyboard focus */
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+/* Improved contact item layout */
+.contact-item {
+  gap: 14px;
+}
+
+.contact-details {
+  min-width: 0;
+  flex: 1;
+}
+
+.contact-name,
+.contact-phone {
+  overflow-wrap: anywhere;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
