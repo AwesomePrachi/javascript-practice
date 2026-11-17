@@ -1,146 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b0d14">
-  <meta
-    name="description"
-    content="A simple contact manager to add, search, and manage your contacts."
-  >
-  <title>Contact Manager</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="A simple contact manager built with HTML, CSS and JavaScript."
+    >
+
+    <title>Contactly | Contact Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+
 <body>
+    <main class="app">
 
-  <main class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo" aria-hidden="true">♧</div>
 
-    <!-- Header -->
-    <header class="app-header">
-      <div>
-        <p class="eyebrow">PERSONAL ORGANIZER</p>
-        <h1>Contact Manager</h1>
-        <p class="subtitle">
-          Keep your important connections in one place.
-        </p>
-      </div>
+            <div>
+                <p class="eyebrow">Personal Organizer</p>
+                <h1>Contact Manager</h1>
+                <p class="subtitle">
+                    Keep your important connections in one place.
+                </p>
+            </div>
+        </header>
 
-      <div class="header-icon" aria-hidden="true">✦</div>
-    </header>
+        <!-- Contact Statistics -->
+        <section class="stats-card" aria-label="Contact statistics">
+            <div>
+                <p class="stats-label">Total Contacts</p>
+                <p class="stats-number" id="totalContacts" aria-live="polite">
+                    3
+                </p>
+            </div>
 
-    <!-- Contact Statistics -->
-    <section class="stats-card" aria-label="Contact statistics">
-      <div class="stats-icon" aria-hidden="true">♧</div>
+            <div class="stats-icon" aria-hidden="true">♧</div>
+        </section>
 
-      <div class="stats-info">
-        <p class="stats-label">TOTAL CONTACTS</p>
-        <h2 id="totalContacts">0</h2>
-      </div>
+        <!-- Add Contact Form -->
+        <section class="panel" aria-labelledby="formTitle">
+            <h2 class="section-title" id="formTitle">
+                Add New Contact
+            </h2>
 
-      <span class="stats-badge">Your contacts</span>
-    </section>
+            <p class="section-description">
+                Save someone's details to your contact list.
+            </p>
 
-    <!-- Add Contact Form -->
-    <section class="form-section">
-      <div class="section-heading">
-        <div>
-          <p class="section-label">GET STARTED</p>
-          <h2>Add a new contact</h2>
-        </div>
+            <form id="contactForm" novalidate>
+                <div class="form-grid">
 
-        <span class="plus-icon" aria-hidden="true">+</span>
-      </div>
+                    <div class="field">
+                        <label for="contactName">Full Name</label>
 
-      <form id="contactForm" novalidate>
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true">♙</span>
 
-        <div class="input-group">
-          <label for="contactName">Full name</label>
+                            <input
+                                type="text"
+                                id="contactName"
+                                placeholder="e.g. Priya Sharma"
+                                maxlength="60"
+                                autocomplete="off"
+                                aria-describedby="formMessage"
+                                required
+                            >
+                        </div>
+                    </div>
 
-          <input
-            type="text"
-            id="contactName"
-            placeholder="Enter contact name"
-            autocomplete="name"
-            maxlength="50"
-            aria-describedby="formMessage"
-            required
-          >
-        </div>
+                    <div class="field">
+                        <label for="contactPhone">Phone Number</label>
 
-        <div class="input-group">
-          <label for="contactPhone">Phone number</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true">⌕</span>
 
-          <input
-            type="tel"
-            id="contactPhone"
-            placeholder="Enter phone number"
-            autocomplete="tel"
-            maxlength="20"
-            aria-describedby="formMessage"
-            required
-          >
-        </div>
+                            <input
+                                type="tel"
+                                id="contactPhone"
+                                placeholder="e.g. 9876543210"
+                                maxlength="20"
+                                autocomplete="tel"
+                                inputmode="tel"
+                                aria-describedby="formMessage"
+                                required
+                            >
+                        </div>
+                    </div>
 
-        <button type="submit" class="add-button">
-          <span aria-hidden="true">+</span>
-          Add Contact
-        </button>
+                </div>
 
-        <p
-          class="form-message"
-          id="formMessage"
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-        ></p>
+                <p
+                    class="form-message"
+                    id="formMessage"
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
+                ></p>
 
-      </form>
-    </section>
+                <button type="submit" class="add-button">
+                    <span aria-hidden="true">＋</span>
+                    Add Contact
+                </button>
+            </form>
+        </section>
 
-    <!-- Contact Directory -->
-    <section class="contacts-section">
-
-      <div class="contacts-heading">
-        <div>
-          <p class="section-label">YOUR DIRECTORY</p>
-          <h2>All Contacts</h2>
-        </div>
-
-        <span class="contact-count" id="contactCount">
-          0 contacts
-        </span>
-      </div>
-
-      <!-- Search -->
-      <div class="search-box">
-        <span aria-hidden="true">⌕</span>
-
-        <input
-          type="search"
-          id="searchInput"
-          placeholder="Search contacts..."
-          aria-label="Search contacts by name"
+        <!-- Contact List -->
+        <section
+            class="panel contacts-panel"
+            aria-labelledby="contactsTitle"
         >
-      </div>
+            <div class="contacts-heading">
+                <h2 class="contacts-title" id="contactsTitle">
+                    Your Contacts
+                </h2>
 
-      <!-- Contact List -->
-      <div
-        class="contact-list"
-        id="contactList"
-        aria-live="polite"
-        aria-label="Contact list"
-      >
-        <!-- Contacts will be rendered using JavaScript -->
-      </div>
+                <span class="count-badge" id="contactCount">
+                    3 contacts
+                </span>
+            </div>
 
-    </section>
+            <!-- Search -->
+            <div class="search-wrapper">
+                <label for="searchInput" class="visually-hidden">
+                    Search contacts by name
+                </label>
 
-    <footer class="app-footer">
-      <p>Made for keeping connections close.</p>
-    </footer>
+                <span class="search-icon" aria-hidden="true">⌕</span>
 
-  </main>
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search contacts by name..."
+                    autocomplete="off"
+                >
+            </div>
 
+            <!-- Contact Cards -->
+            <div
+                class="contact-list"
+                id="contactList"
+                aria-live="polite"
+                aria-atomic="false"
+            ></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            BUILT WITH HTML · CSS · JAVASCRIPT
+        </footer>
+
+    </main>
 </body>
-</html
+</html>

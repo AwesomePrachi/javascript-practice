@@ -9,6 +9,7 @@
 :root {
     --bg: #090b12;
     --card: #111522;
+    --surface: #0d111c;
     --border: #292f44;
 
     --text: #f8fafc;
@@ -16,7 +17,9 @@
 
     --accent: #818cf8;
     --accent-light: #a5b4fc;
+
     --danger: #fb7185;
+    --green: #34d399;
 
     --transition: 200ms ease;
 }
@@ -45,6 +48,10 @@ body {
 button,
 input {
     font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* ---------- Main Layout ---------- */
@@ -114,6 +121,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
 
     margin-bottom: 23px;
     padding: 22px 25px;
@@ -140,6 +148,8 @@ h1 {
 .stats-number {
     font-size: 34px;
     font-weight: 750;
+    letter-spacing: -1px;
+    font-variant-numeric: tabular-nums;
 }
 
 .stats-icon {
@@ -174,6 +184,7 @@ h1 {
 
 .section-title {
     margin-bottom: 7px;
+
     font-size: 17px;
     font-weight: 650;
 }
@@ -219,14 +230,17 @@ h1 {
 
     background: #0b0f1a;
 
-    transition: border-color var(--transition);
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
 .input-wrapper:focus-within {
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
 }
 
-.input-wrapper span {
+.input-icon {
     color: var(--accent);
     font-size: 15px;
 }
@@ -249,7 +263,25 @@ input::placeholder {
     color: #606a81;
 }
 
-/* ---------- Buttons ---------- */
+/* ---------- Form Feedback ---------- */
+
+.form-message {
+    min-height: 18px;
+    margin-top: 12px;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.form-message.success {
+    color: var(--green);
+}
+
+.form-message.error {
+    color: var(--danger);
+}
+
+/* ---------- Add Button ---------- */
 
 .add-button {
     width: 100%;
@@ -259,7 +291,7 @@ input::placeholder {
     justify-content: center;
     gap: 9px;
 
-    margin-top: 25px;
+    margin-top: 8px;
     padding: 14px;
 
     border: 1px solid #818cf8;
@@ -273,6 +305,8 @@ input::placeholder {
 
     cursor: pointer;
 
+    box-shadow: 0 6px 22px rgba(99, 102, 241, 0.15);
+
     transition:
         transform var(--transition),
         filter var(--transition);
@@ -283,29 +317,8 @@ input::placeholder {
     filter: brightness(1.1);
 }
 
-.delete-button {
-    width: 35px;
-    height: 35px;
-    flex-shrink: 0;
-
-    display: grid;
-    place-items: center;
-
-    border: 1px solid #373044;
-    border-radius: 10px;
-
-    background: #191522;
-    color: var(--danger);
-
-    font-size: 17px;
-    cursor: pointer;
-
-    transition: background var(--transition);
-}
-
-.delete-button:hover {
-    border-color: var(--danger);
-    background: rgba(251, 113, 133, 0.1);
+.add-button:active {
+    transform: translateY(0);
 }
 
 /* ---------- Focus Accessibility ---------- */
@@ -317,6 +330,10 @@ input:focus-visible {
 }
 
 /* ---------- Contacts Section ---------- */
+
+.contacts-panel {
+    padding: 25px;
+}
 
 .contacts-heading {
     display: flex;
@@ -360,14 +377,17 @@ input:focus-visible {
 
     background: #0b0f1a;
 
-    transition: border-color var(--transition);
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
 .search-wrapper:focus-within {
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
 }
 
-.search-wrapper span {
+.search-icon {
     color: var(--accent);
     font-size: 17px;
 }
@@ -406,6 +426,8 @@ input:focus-visible {
 
     background: #0d111c;
 
+    animation: slideIn 0.25s ease;
+
     transition:
         border-color var(--transition),
         transform var(--transition);
@@ -432,6 +454,7 @@ input:focus-visible {
 
     font-size: 16px;
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 .contact-details {
@@ -453,6 +476,95 @@ input:focus-visible {
     font-size: 12px;
     letter-spacing: 0.3px;
     overflow-wrap: anywhere;
+}
+
+/* ---------- Delete Button ---------- */
+
+.delete-button {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid #373044;
+    border-radius: 10px;
+
+    background: #191522;
+    color: var(--danger);
+
+    font-size: 17px;
+    cursor: pointer;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition);
+}
+
+.delete-button:hover {
+    border-color: var(--danger);
+    background: rgba(251, 113, 133, 0.1);
+}
+
+/* ---------- Empty State ---------- */
+
+.empty-state {
+    padding: 35px 15px;
+
+    border: 1px dashed #343a50;
+    border-radius: 14px;
+
+    background: rgba(12, 15, 25, 0.5);
+    text-align: center;
+}
+
+.empty-icon {
+    width: 49px;
+    height: 49px;
+
+    display: grid;
+    place-items: center;
+
+    margin: 0 auto 14px;
+
+    border-radius: 15px;
+
+    background: #191e30;
+    color: #9299f8;
+
+    font-size: 22px;
+}
+
+.empty-title {
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.empty-description {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* ---------- Visually Hidden ---------- */
+
+.visually-hidden {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+    border: 0;
 }
 
 /* ---------- Footer ---------- */
@@ -480,6 +592,18 @@ input:focus-visible {
     }
 }
 
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 520px) {
@@ -487,7 +611,8 @@ input:focus-visible {
         padding: 27px 13px;
     }
 
-    .panel {
+    .panel,
+    .contacts-panel {
         padding: 19px 15px;
     }
 
@@ -508,6 +633,7 @@ input:focus-visible {
     .avatar {
         width: 39px;
         height: 39px;
+        font-size: 14px;
     }
 
     .delete-button {
@@ -526,145 +652,4 @@ input:focus-visible {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-}
-
-/* Empty states */
-.empty-state {
-  text-align: center;
-  padding: 36px 16px;
-  border: 1px dashed var(--border-color);
-  border-radius: 16px;
-  background: var(--surface-color);
-}
-
-.empty-icon {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto 14px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: var(--input-background);
-  color: var(--text-secondary);
-  font-size: 22px;
-}
-
-.empty-state h3 {
-  color: var(--text-primary);
-  font-size: 15px;
-  margin-bottom: 7px;
-}
-
-.empty-state p {
-  color: var(--text-secondary);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-/* Delete button */
-.delete-button {
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  background: transparent;
-  color: var(--text-secondary);
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.delete-button:hover {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-  border-color: rgba(239, 68, 68, 0.3);
-}
-
-.delete-button:focus-visible {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 3px;
-}
-
-@media (max-width: 480px) {
-  .empty-state {
-    padding: 28px 12px;
-  }
-}
-
-/* Form feedback messages */
-.form-message {
-  min-height: 20px;
-  margin-top: 12px;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.form-message.success {
-  color: #34d399;
-}
-
-.form-message.error {
-  color: #f87171;
-}
-
-/* Input validation feedback */
-.input-group input.input-error {
-  border-color: #f87171;
-}
-
-.input-group input.input-error:focus {
-  outline-color: #f87171;
-}
-
-/* Improved button interaction */
-.add-button {
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease,
-    background 0.2s ease;
-}
-
-.add-button:hover {
-  transform: translateY(-1px);
-}
-
-.add-button:active {
-  transform: translateY(0);
-}
-
-/* Consistent keyboard focus */
-input:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 3px;
-}
-
-/* Improved contact item layout */
-.contact-item {
-  gap: 14px;
-}
-
-.contact-details {
-  min-width: 0;
-  flex: 1;
-}
-
-.contact-name,
-.contact-phone {
-  overflow-wrap: anywhere;
-}
-
-/* Reduced motion accessibility */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
